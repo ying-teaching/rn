@@ -4,6 +4,17 @@ Table of conent
 
 ## 0 Setup
 
+Windows download installation packages. Mac uses `brew`.
+
+### 0.1 Nodejs and NPM
+
+`node -v`
+`npm -v`
+
+### 0.2 Expo
+
+`npm i expo-cli --global`
+
 ## 1 Introduction
 
 ### 1.1 Overview
@@ -14,13 +25,15 @@ Table of conent
 
 ### 1.4 Basic Concepts
 
-## 2 JSX
+## 2 JSX and Expo
 
 ### 2.1 Syntax
 
 ### 2.2 Core Components
 
 ### 2.3 Styles
+
+### 2.4 Expo
 
 ## 3 Layout
 
@@ -30,9 +43,9 @@ Table of conent
 
 ### 3.3 More Examples
 
-## 4 Navigation
+## 5 Hooks
 
-## 5 States and Effects
+## 5 Navigation
 
 ## 6 List and Maps
 
@@ -40,9 +53,7 @@ Table of conent
 
 ## 8 Gestures and Images
 
-## 9 Redux
-
-## 10 Instagram Clone
+## 9 GraphQL and Apollo Client
 
 ## Appendix
 
