@@ -70,7 +70,9 @@ The above `useState(0)` call does two things:
 
 The pattern of using `setState` is `[<value-refence>, <setter-function>] = useState(<initialValue>)`. The `useState` returns a pair of value in an array. The assignment is an array destructuring. The left is a name of a state variable, the right is a function name that can set a new value to the state variable. The two names doens't matter, you can name them whatever make sense in the context.
 
-Whenever you call the `<setter-function>` such as `setCount(newValue)`, the component is re-rendered with updated values.
+Whenever you call the `<setter-function>` such as `setCount(newValue)`, the component is re-rendered with updated values, i.e., the `<value-reference>` has the current value after applying updates. The `setter-function` can take a simple value or take a function as its arugment. The function argument takes the current value as it argument and returns a new value.
+
+TODO: demo.
 
 You can use multiple state variables. For example, the following code snippet defines three states:
 
@@ -82,7 +84,7 @@ const [todos, setTodos] = useState([{ text: "Learn Hooks" }]);
 
 ## Effect Hook
 
-When you fetch data from a web site, read from local storage, or subscribe to an external source to get notification of changes, you are performing a so-called `side effect`. Usually these tasks should be performed asynchronously to not freeze UI.
+When you fetch data from a web site, read from local storage, set a timer function, or subscribe to an external source to get notification of changes, you are performing a so-called `side effect`. Usually these tasks should be performed asynchronously to not freeze UI.
 
 In a simple case, you call `useEffect` with a side-effect function as its argument like the following:
 
@@ -96,13 +98,9 @@ The side-effect function is a mandatory argument. Without optional second argume
 
 TODO: example.
 
-The side-effect function can return another function that is executed when the component is destroyed. The returned function is often used to cancel incompleted function calls or release resources. For example, you start an expensive database search operation but change your mind and quickly navigate away from the current screen. In this case, it is a good idea to cancel the search when the search screen is not longer needed.
+The side-effect function can return another function that is executed when the component is destroyed. The returned function is often used to cancel incompleted function calls or release resources. For example, you start an expensive database search operation but change your mind and quickly navigate away from the current screen. In this case, it is a good idea to cancel the search when the search screen is not longer needed. A screen subscribe to a notification should cancel the subscription when the screen is destroyed.
 
 TODO: example.
-
-## Ref Hook
-
-## Your Own Hooks
 
 ## Rules of Hooks
 
@@ -113,6 +111,8 @@ The [Rules of Hooks](https://reactjs.org/docs/hooks-rules.html) documents the ru
 - Use ESLint Plugin to enforce the above two rules.
 
 ## To Learn More
+
+The [Hooks API Reference](https://reactjs.org/docs/hooks-reference.html) has detail information for each Hook.
 
 The Youtube video [Getting Closure on React Hooks](https://youtu.be/KJP1E-Y-xyo) shows how to build a tiny Hook clone in simple JavaScript code. It helps to understanding the rules and theories of Hooks.
 

@@ -1,19 +1,32 @@
 # React Native Lecture Notes
 
-Table of conent
+Guideline
+
+- The cutting edge technology: functional component, GraphQL API.
+- The 80/20 rules: learn the 20% that can accomplish 80% of the job.
+- Pratical: a lot of code examples and exercises.
+
+The table of contents:
 
 ## 0 Setup
 
 Windows download installation packages. Mac uses `brew`.
 
-### 0.1 Nodejs and NPM
+### 0.1 VS Code and GitHub
+
+VS Code plugins.
+
+### 0.2 Nodejs and NPM
 
 `node -v`
 `npm -v`
 
-### 0.2 Expo
+how to use `node` and `npm`.
+
+### 0.3 Expo and Expo Stack
 
 `npm i expo-cli --global`
+How to use `expo`.
 
 ## 1 Introduction
 
@@ -43,7 +56,13 @@ Windows download installation packages. Mac uses `brew`.
 
 ### 3.3 More Examples
 
-## 5 Hooks
+## 4 Hooks and Interaction
+
+### 4.1 Functional Components
+
+### 4.1 Hooks
+
+### 4.2 Interaction
 
 ## 5 Navigation
 
@@ -53,11 +72,24 @@ Windows download installation packages. Mac uses `brew`.
 
 ## 8 Gestures and Images
 
-## 9 GraphQL and Apollo Client
+## 9 Working Offline
+
+## 10 GraphQL and Apollo Client
+
+### 10.1 GraphQL
+
+### 10.2 Apollo Client
+
+### 10.3 A Demo Project
 
 ## Appendix
 
 ### A.1 JavaScript
+
+- Arrow function
+- High order function
+- Destruction
+- Promise
 
 ### A.2 GitHub
 
