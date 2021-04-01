@@ -31,21 +31,6 @@ How to use `expo`.
 
 ## 1 Introduction
 
-### 1.1 Overview
-
-[React Native (RN)](https://reactnative.dev/) is based on [React](https://reactjs.org/) that is "a JavaScript library for building user interfaces". RN reuses React's UI building mechanism and render the UI components to mobile devices. RN's tag line is "Learn once, write everywhere". It means:
-
-- Single reusable code: Instead of writing Java/Kotlin programs for Android and writing Objective-C/Swift for iOS, you use JavaScript to write apps for both platform and reuse many code.
-- Native UI: a set of platform agnostic native components that map to platform-specific UI views.
-
-As a developer, you will like the declarative UI and functional programming paradigm.
-
-### 1.2 Hello World
-
-### 1.3 View Your App
-
-### 1.4 Basic Concepts
-
 ## 2 JSX and Expo
 
 ### 2.1 Components
@@ -56,17 +41,15 @@ As a developer, you will like the declarative UI and functional programming para
 
 ### 2.4 Expo
 
-## 3 Layout
+## 3 Layout and Components
 
 ### 3.1 Flex
 
 ### 3.2 RN Styles
 
-### 3.3 More Examples
+### 3.3 Core Components
 
 ## 4 Hooks and Interaction
-
-### 4.1 Functional Components
 
 ### 4.1 Hooks
 
@@ -95,8 +78,10 @@ As a developer, you will like the declarative UI and functional programming para
 ### A.1 JavaScript
 
 - Arrow function
-- High order function
+- Object and opoeratoins
+- Collecction operations
 - Destruction
+- High order function
 - Promise
 
 ### A.2 GitHub

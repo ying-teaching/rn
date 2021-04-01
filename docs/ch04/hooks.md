@@ -19,68 +19,9 @@ Essentially, hooks are functions that let you "hook into" functional components 
 
 In addition to the built-in hooks, you can create custom hooks that manage stateful logic and resue them in different components. Due to the functional nature of the hooks, hooks are reused for their logic, not their states. The state of each component is independent.
 
-## Mind Model
+## Lifecycle and Mind Model
 
 A good way to think about hooks and functional components is to think that hooks add some extra hidden contextual varaibles to functional components. Every time there is a change in the props/states of a functional component, the component is called and rendered with new contextual variables. It simulates memory for functional components.
-
-## State Hook
-
-There are two types of data that control a component: props and state. props are set by the parent and they are fixed throughout the lifetime of a component. For data that is going to change, we have to use state.
-
-In general, you should initialize state in the constructor, and then call `setState` when you want to change it. A hook is a special function that lets you “hook into” a component. The `useState` function is a hook that lets you add state to components.
-
-```js
-import React, { useState } from "react";
-import { Button, Text, View } from "react-native";
-
-const Cat = (props) => {
-  const [count, setCount] = useState(0);
-
-  return (
-    <View>
-      <Text>
-        You pet {props.name} the cat {count} times!
-      </Text>
-      <Button
-        title="Pet Cat"
-        onPress={() => {
-          setCount(count + 1);
-        }}
-      />
-    </View>
-  );
-};
-
-const Cafe = () => {
-  return (
-    <>
-      <Cat name="Alice" />
-      <Cat name="Bob" />
-    </>
-  );
-};
-
-export default Cafe;
-```
-
-The above `useState(0)` call does two things:
-
-- it creates a state variable `count` with an initial value of `0`.
-- it creates a function to set that state variable’s value— `setCount`.
-
-The pattern of using `setState` is `[<value-refence>, <setter-function>] = useState(<initialValue>)`. The `useState` returns a pair of value in an array. The assignment is an array destructuring. The left is a name of a state variable, the right is a function name that can set a new value to the state variable. The two names doens't matter, you can name them whatever make sense in the context.
-
-Whenever you call the `<setter-function>` such as `setCount(newValue)`, the component is re-rendered with updated values, i.e., the `<value-reference>` has the current value after applying updates. The `setter-function` can take a simple value or take a function as its arugment. The function argument takes the current value as it argument and returns a new value.
-
-TODO: demo.
-
-You can use multiple state variables. For example, the following code snippet defines three states:
-
-```js
-const [age, setAge] = useState(42);
-const [fruit, setFruit] = useState("banana");
-const [todos, setTodos] = useState([{ text: "Learn Hooks" }]);
-```
 
 ## Effect Hook
 
@@ -101,6 +42,8 @@ TODO: example.
 The side-effect function can return another function that is executed when the component is destroyed. The returned function is often used to cancel incompleted function calls or release resources. For example, you start an expensive database search operation but change your mind and quickly navigate away from the current screen. In this case, it is a good idea to cancel the search when the search screen is not longer needed. A screen subscribe to a notification should cancel the subscription when the screen is destroyed.
 
 TODO: example.
+
+## Context Hook
 
 ## Rules of Hooks
 
