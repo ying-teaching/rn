@@ -29,13 +29,13 @@ The table of contents:
 
 ### 2.4 Expo
 
-## 3 Layout and Components
+## 3 Core Components and Layout
 
-### 3.1 Flex
+### 3.1 Core Components
 
-### 3.2 RN Styles
+### 3.2 Flex
 
-### 3.3 Core Components
+### 3.3 RN Styles
 
 ## 4 Hooks and Interaction
 
