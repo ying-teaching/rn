@@ -45,7 +45,7 @@ The table of contents:
 
 ## 5 Navigation
 
-## 6 List and Maps
+## 6 List, Progress and Maps
 
 ## 7 Input and Modal
 

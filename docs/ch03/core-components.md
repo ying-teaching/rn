@@ -19,7 +19,7 @@ Here we only conver some commonly used core components.
 
 [`<Image>`](https://reactnative.dev/docs/image): A React component for displaying different types of images, including network images, static resources, temporary local images, and images from local disk, such as the camera roll.
 
-[`<Button>`](https://reactnative.dev/docs/button): A simple clickable button.
+[`<Button>`](https://reactnative.dev/docs/button): A simple clickable button. If you want a cusotmized button, check [Custom Button](https://docs.expo.io/tutorial/button/) to create a custom button using `<TouchableOpacity>`.
 
 [`<Switch>`](https://reactnative.dev/docs/switch).
 
