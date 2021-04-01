@@ -3,6 +3,7 @@
 Guideline
 
 - The cutting edge technology: functional component, GraphQL API.
+- Functional programming: simple code.
 - The 80/20 rules: learn the 20% that can accomplish 80% of the job.
 - Pratical: a lot of code examples and exercises.
 
@@ -32,6 +33,13 @@ How to use `expo`.
 
 ### 1.1 Overview
 
+[React Native (RN)](https://reactnative.dev/) is based on [React](https://reactjs.org/) that is "a JavaScript library for building user interfaces". RN reuses React's UI building mechanism and render the UI components to mobile devices. RN's tag line is "Learn once, write everywhere". It means:
+
+- Single reusable code: Instead of writing Java/Kotlin programs for Android and writing Objective-C/Swift for iOS, you use JavaScript to write apps for both platform and reuse many code.
+- Native UI: a set of platform agnostic native components that map to platform-specific UI views.
+
+As a developer, you will like the declarative UI and functional programming paradigm.
+
 ### 1.2 Hello World
 
 ### 1.3 View Your App
@@ -40,9 +48,9 @@ How to use `expo`.
 
 ## 2 JSX and Expo
 
-### 2.1 Syntax
+### 2.1 Components
 
-### 2.2 Core Components
+### 2.2 JSX
 
 ### 2.3 Styles
 
