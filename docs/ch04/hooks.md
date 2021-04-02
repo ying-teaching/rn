@@ -43,7 +43,7 @@ The side-effect function can return another function that is executed when the c
 
 TODO: example.
 
-## Context Hook
+## Context and Context Hook
 
 ## Rules of Hooks
 
