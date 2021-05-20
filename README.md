@@ -1,79 +1,31 @@
 # React Native Lecture Notes
 
-Guideline
+## Prerequisite
 
-- The cutting edge technology: functional component, GraphQL API.
+You should have some programming experience. An introduction course in JavaScript or Python programming is good enough. If JavaScript is new for you, the Part I of the book [The JavaScript Way](https://github.com/thejsway/thejsway) should be sufficient. Some of the commonly used advanced JavaScript features are covered in [Modern Javascript: : Everything you missed over the last 10 years](https://turriate.com/articles/modern-javascript-everything-you-missed-over-10-years). We will explain the advanced concepts when we use them.
+
+## Features
+
+- The cutting edge technology: functional hooks.
 - Functional programming: simple code.
 - The 80/20 rules: learn the 20% that can accomplish 80% of the job.
 - Pratical: a lot of code examples and exercises.
 
-The table of contents:
+## Table of Content
 
-## 0 Setup
-
-### 0.1 VS Code and GitHub
-
-### 0.2 Nodejs and NPM
-
-### 0.3 Expo and Expo Stack
-
-## 1 Introduction
-
-## 2 JSX and Expo
-
-### 2.1 Components
-
-### 2.2 JSX
-
-### 2.3 Styles
-
-### 2.4 Expo
-
-## 3 Core Components and Layout
-
-### 3.1 Core Components
-
-### 3.2 Flex
-
-### 3.3 RN Styles
-
-## 4 Hooks and Interaction
-
-### 4.1 Hooks
-
-### 4.2 Interaction
-
-## 5 Navigation
-
-## 6 List, Progress and Maps
-
-## 7 Input and Modal
-
-## 8 Gestures and Images
-
-## 9 Working Offline
-
-## 10 GraphQL and Apollo Client
-
-### 10.1 GraphQL
-
-### 10.2 Apollo Client
-
-### 10.3 A Demo Project
-
-## Appendix
-
-### A.1 JavaScript
-
-- Arrow function
-- Object and opoeratoins
-- Collecction operations
-- Destruction
-- High order function
-- Promise
-
-### A.2 GitHub
-
-### A.3 Expo
-
-### A.4 Node
+- ch00 Setup
+- ch01 Introduction
+- ch02 JSX and Expo
+- ch03 Core Components and Layout
+  - 3.1 Core Components
+  - 3.2 Flex
+  - 3.3 RN Styles
+- ch04 Hooks and Interaction
+  - 4.1 Hooks
+  - 4.2 Interaction
+- ch05 Navigation
+- ch06 List, Progress and Maps
+- ch07 Input and Modal
+- ch08 Gestures and Images
+- ch09 Working Offline
+- ch10 GraphQL and Apollo Client
