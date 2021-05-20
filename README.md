@@ -13,7 +13,7 @@ You should have some programming experience. An introduction course in JavaScrip
 
 ## Table of Content
 
-- ch00 Setup
+- [ch00 Setup](docs/ch00)
 - ch01 Introduction
 - ch02 JSX and Expo
 - ch03 Core Components and Layout
