@@ -14,7 +14,7 @@ You should have some programming experience. An introduction course in JavaScrip
 ## Table of Content
 
 - [ch00 Setup](docs/ch00)
-- ch01 Introduction
+- [ch01 Introduction](docs/ch01)
 - ch02 JSX and Expo
 - ch03 Core Components and Layout
   - 3.1 Core Components
