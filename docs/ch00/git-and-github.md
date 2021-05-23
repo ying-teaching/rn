@@ -26,7 +26,7 @@ Right click the left activity bar of your VS Code Windwo, check the `Account` to
 
 Create a `.gitignore` file in your project root folder (the folder where `.git` folder sits) to add filenames or filename patterns for files that git should ignore. For example, MacOS user should ignore the system-generated `.DS_Store`. Add the `.DS_Store` line to `.gitignore` will work.
 
-You can copy [a sample Python git igorefile](https://github.com/github/gitignore/blob/master/Python.gitignore) for your Python project and edit it to fit your needs. For example, add the `.DS_Store` line to the copied `.gitignore` file.
+You can copy a sample git igorefile file from [Github .gitingore templates](https://github.com/github/gitignore) and edit it to fit your needs. For example, add the `.DS_Store` line to the copied `.gitignore` file. Many development tools such as Expo for React Native creates Git repository and `.gitingore` file automatically for you.
 
 ### 2.4 Create and Edit Your Project Files
 

@@ -6,7 +6,7 @@ You should have some programming experience. An introduction course in JavaScrip
 
 ## Features
 
-- The cutting edge technology: functional hooks.
+- The cutting edge technology: react hooks.
 - Functional programming: simple code.
 - The 80/20 rules: learn the 20% that can accomplish 80% of the job.
 - Pratical: a lot of code examples and exercises.
