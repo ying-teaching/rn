@@ -7,6 +7,11 @@ Node.js, often called node, is a JavaScript engine that executes JavaScript code
 - `node -v`: shows the current node.js verison
 - `npm -v`: shows the node pacakge managerment version
 
+[`npm`](https://docs.npmjs.com/) is JavaScript's package management system. It has two components: a world's largest software registry and a client CLI tool. As a developer, you just the `npm` CLI tool to download JS packages. Facebook develops another client CLI tool called [`yarn`](https://classic.yarnpkg.com/en/). Because React and React Native are developed by Faceboo, many React developers use `yarn` to manage JS packages. To install it and verify the installation, run the following CLI commands:
+
+`npm install --global yarn`
+`yarn -v`
+
 Resources:
 
 - [What is npm](https://youtu.be/ZNbFagCBlwo)
