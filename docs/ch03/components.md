@@ -2,7 +2,7 @@
 
 ## Introduction
 
-A component is an individual resualble piece of UI. You can define a component using a class or a function, corresponding to class component and functional component. You should use functional component because it is simpler and more reusable than a class component.
+A component is an individual resualble piece of UI. A component has one or more elements. An element is the smallest renderable unit available in React. You can define a component using a class or a function, corresponding to class component and functional component. You should use functional component because it is simpler and more reusable than a class component.
 
 ## Component and Props
 
