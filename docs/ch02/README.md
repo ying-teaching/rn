@@ -4,7 +4,9 @@ Reactive uses JavaScript as its programming language. It uses the CSS to style t
 
 ## JavaScript Review
 
-[The JavaScript Way](https://github.com/thejsway/thejsway) Part 1.
+For basic JavaScript programming, please check the [The JavaScript Way](https://github.com/thejsway/thejsway) Part 1.
+
+For details and advanced JavaScript features, check [The Modern JavaScript Tutorial](https://javascript.info/) Part 1. You should know [Export and Import](https://javascript.info/import-export).
 
 ## CSS Review
 
