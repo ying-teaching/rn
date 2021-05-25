@@ -6,7 +6,15 @@ Reactive uses JavaScript as its programming language. It uses the CSS to style t
 
 For basic JavaScript programming, please check the [The JavaScript Way](https://github.com/thejsway/thejsway) Part 1.
 
-For details and advanced JavaScript features, check [The Modern JavaScript Tutorial](https://javascript.info/) Part 1. You should know [Export and Import](https://javascript.info/import-export).
+A quick review of new JavaScript features, check the [Modern JavaScript](https://turriate.com/articles/modern-javascript-everything-you-missed-over-10-years). The commonly used features include:
+
+- [Arrow functions](https://turriate.com/articles/modern-javascript-everything-you-missed-over-10-years#arrows)
+- [Nullish coalescing](https://turriate.com/articles/modern-javascript-everything-you-missed-over-10-years#optional-chaining)
+- [Spread Operator](https://turriate.com/articles/modern-javascript-everything-you-missed-over-10-years#spread)
+- [Desctructuring](https://turriate.com/articles/modern-javascript-everything-you-missed-over-10-years#destructuring)
+- [Module import/export](https://turriate.com/articles/modern-javascript-everything-you-missed-over-10-years#modules)
+
+For more details and advanced JavaScript features, check [The Modern JavaScript Tutorial](https://javascript.info/) Part 1.
 
 ## CSS Review
 
