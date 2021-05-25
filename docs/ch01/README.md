@@ -30,7 +30,7 @@ Then, `cd hello-world`, `yarn start`. It opens a development tool page in `local
 
 In the command line, press `w` to open a web view. Or in the dev page, click `Run in web browser`. to see the web version of your app.
 
-Open the `hello-world` folder in VS Code, change `<text>` element in the `app.js` as `<Text>Hello IS657</Text>`. Save the file.
+Open the `hello-world` folder in VS Code, change `<text>` element in the `app.js` as `<Text>Hello World</Text>`. Save the file.
 
 Your web page changes. You can scan the barcode using Expo Go to check the app in your phone.
 
