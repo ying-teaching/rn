@@ -6,19 +6,17 @@ JSX is a JavaScript syntax extension used to describe UI components. RN is desig
 
 Using JSX, you can write markup inside Javascript, providing you with a superpower to write logic and markup of a component inside a single jsx file.
 
-## Basic Usage
+## Element,Component
 
 Because RN uses `React` to compile JSX, you need to import it first as: `import React from 'react'` even you don't use it directly in your code.
 
 An element is the smallest renderable unit available in React. A component is an individual resualble piece of UI. A component has one or more elements. React elements and components are created by using their tags, either with or without closing tag. For example: `<Text>content</Text>` or `<Button title="Click" />`. It uses the same HTML syntax with different tag name. The RN built-in and custom components use capitalized names.
 
-The JavaScript expression are put into `{}` inside a tag. JavaScript expressions inside JSX will be evaluated to a string, a RN component or a list of strings/components.
-
 Use component property names to initialize its props. A single prop without assingment has a default value of `true`. For example: `<MyTextBox autocomplete />` is the same as `<MyTextBox autocomplete={true} />`.
 
 ## Embedding Expressions in JSX
 
-You can embed JavaScripit expressions in JSX by putting them inside a pair of curly bracket `{expression}`. For example:
+JavaScript expressions inside JSX will be evaluated to a string, a RN component or a list of strings/components. You can embed JavaScripit expressions in JSX by putting them inside a pair of curly bracket `{expression}`. For example:
 
 ```javascript
 function formatName(user) {
@@ -32,16 +30,6 @@ const user = {
 
 const element = <h1>Hello, {formatName(user)}!</h1>;
 ```
-
-## Children in JSX
-
-If a component has both opening and closing tags, you can put text or chilc components between the tags. The text will become a string. The nested content and children components are set as `props.children` in the parent component.
-
-A RN component can return an array of elements.
-
-`false`, `null`, `undefined`, and `true` are valid children that are not rendered. If you want to display them, use `String(myVariable)` to dispaly those varaibles.
-
-You can use boolean variable to conditionally render elements. For example: `{showText && <Text>Hello</Text>}`.
 
 ## Resource
 
