@@ -28,7 +28,7 @@ VSCode extensions are dev tools that make you more productive. To install an ext
 Please install the following VSCode extensions:
 
 - [ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint): analyze JS code and fix many problems automatically.
-- [VS Code ES7 React/Redux/React-Native/JS snippets](https://marketplace.visualstudio.com/items?itemName=dsznajder.es7-react-js-snippets): JavaScript and React/Redux snippets that save a lot of typing.
+- [ES7 React/Redux/React-Native/JS snippets](https://marketplace.visualstudio.com/items?itemName=dsznajder.es7-react-js-snippets): JavaScript and React/Redux snippets that save a lot of typing.
 
 Optionally, you may also want to install the following extensions:
 
