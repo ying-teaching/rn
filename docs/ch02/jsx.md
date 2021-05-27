@@ -56,5 +56,5 @@ const element = <Text>Hello, {formatName(user)}!</Text>;
 
 ## Resource
 
-- [Introducing JSX](https://reactjs.org/docs/introducing-jsx.html)
+- [Introducing JSX](https://reactnative.dev/docs/intro-react#jsx)
 - [JSX Guide](https://www.reactnative.express/javascript/jsx)
