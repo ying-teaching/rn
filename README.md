@@ -24,13 +24,8 @@ To be current and accurate, this lecture notes is based on official documents an
 - [ch00 Setup](docs/ch00)
 - [ch01 Get Started](docs/ch01)
 - [ch02 JS, CSS and JSX](docs/ch02)
-- ch03 Core Components and Layout
-  - 3.1 Core Components
-  - 3.2 Flex
-  - 3.3 RN Styles
-- ch04 Hooks and Interaction
-  - 4.1 Hooks
-  - 4.2 Interaction
+- [ch03 Style and Layout](docs/ch03)
+- [ch04 Components and Hooks](docs/ch04)
 - ch05 Navigation
 - ch06 List, Progress and Maps
 - ch07 Input and Modal
