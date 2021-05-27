@@ -22,7 +22,7 @@ Additionally, you can use RN to develop Windows or MacOS desktop applicatoins. P
 
 ## 3 Hello World
 
-From command line, run `expo init hello-world -t blank`. The `-t blank` is an abbreviation for `--template blank`. The command initializes a RN project using a blank project template. It create a `hello-world` folder that is the project root of the application `hello-world`.
+From command line, run `expo init hello-world -t blank`. It initialized a project named `hello-world`. The `-t blank` is an abbreviation for `--template blank`. The command creates a RN project from a blank project template that has a very simple UI using JavaScript. It creates a `hello-world` folder that is the project root.
 
 Then, run the following two commands:
 

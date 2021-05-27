@@ -2,13 +2,13 @@
 
 ## Rational
 
-JSX is a JavaScript syntax extension used to describe UI components. RN is designed with the view that rendering logic is inherently coupled with UI logic such as event handling and state management. Therefore JSX consists of declarative UI description and JavaScript code. JSX is a syntac sugar for JavaScript code. It makes UI description much simpler than pure JavaScript code.
+JSX is a JavaScript syntax extension used to describe UI components. In Reeact Native, UI is inherently coupled with UI logic such as event handling and state management. Therefore JSX consists of declarative UI description and JavaScript code. JSX is a syntac sugar for JavaScript code. It makes UI description much simpler than pure JavaScript code.
 
-Using JSX, you can write markup inside Javascript, providing you with a superpower to write logic and markup of a component inside a single jsx file.
+Using JSX, you can write XML markup inside Javascript, providing you with a superpower to write logic and markup of a component inside a single JSX file.
 
 ## Compile JSX
 
-Because RN uses `React` to compile JSX, you need to import it first as: `import React from 'react'` even you don't use it directly in your code.
+Because RN uses `React` to compile JSX, you need to import it first as: `import React from 'react'` in your JSX file even you don't use it directly in your code.
 
 ## Views and Components
 
@@ -38,7 +38,7 @@ const user = {
   lastName: "Perez",
 };
 
-const element = <h1>Hello, {formatName(user)}!</h1>;
+const element = <Text>Hello, {formatName(user)}!</Text>;
 ```
 
 ## Resource
