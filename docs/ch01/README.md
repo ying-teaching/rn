@@ -1,4 +1,4 @@
-# Introduction
+# Get Started
 
 ## 1 React
 

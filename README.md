@@ -17,12 +17,12 @@ To be current and accurate, this lecture notes is based on official documents an
 
 - [React Native Document](https://reactnative.dev/): this is the website for React Native.
 - [Expo Document](https://docs.expo.io/): Expo is a RN developement tool.
-- [React Native Express](https://www.reactnative.express/): this is a guide to RN development.
+- [React Native Express Guide](https://www.reactnative.express/): this is a guide to RN development.
 
 ## Table of Content
 
 - [ch00 Setup](docs/ch00)
-- [ch01 Introduction](docs/ch01)
+- [ch01 Get Started](docs/ch01)
 - [ch02 JS, CSS and JSX](docs/ch02)
 - ch03 Core Components and Layout
   - 3.1 Core Components
