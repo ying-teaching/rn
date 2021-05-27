@@ -20,13 +20,20 @@ Though RN encourages you to use different native components for different mobile
 
 Additionally, you can use RN to develop Windows or MacOS desktop applicatoins. Please check the Microsoft [React Native for Windows + macOS](https://microsoft.github.io/react-native-windows/) website for details.
 
-## 1.2 Hello World
+## 3 Hello World
 
-From command line, run `expo init hello-world`. Press enter to create a blank minimum app using managed workflow. It create a `hello-world` folder that is the project root of the application `hello-world`.
+From command line, run `expo init hello-world -t blank`. The `-t blank` is an abbreviation for `--template blank`. The command initializes a RN project using a blank project template. It create a `hello-world` folder that is the project root of the application `hello-world`.
 
-Then, `cd hello-world`, `yarn start`. It opens a development tool page in `localhost: 19002`.
+Then, run the following two commands:
 
-## 3 Run Your App
+```sh
+cd hello-world
+yarn start
+```
+
+It opens a development tool page in `localhost: 19002`.
+
+## 4 Run and Edit Your App
 
 In the command line, press `w` to open a web view. Or in the dev page, click `Run in web browser`. to see the web version of your app.
 
@@ -34,13 +41,13 @@ Open the `hello-world` folder in VS Code, change `<text>` element in the `app.js
 
 Your web page changes. You can scan the barcode using Expo Go to check the app in your phone.
 
-## 4 Push to GitHub
+## 5 Push to GitHub
 
 In VS Code, open the `Command Palette`, `Ctrl+Shift+P` in Windows or `Command + Shift + P` in macOS, type `Publish to GitHub` and click the command. VS Code asks you to login and authorize accessing to your GitHub account. Publish it as a public repository thus other people can see it. Your local repository is published to GitHub.
 
 For any following changes, you need commit locally first, then push local commits to GitHub.
 
-## 5 Publish to Expo Snacks
+## 6 Publish to Expo Snacks
 
 To find the URL for you git repository, go to your repository in GitHub, click Code icon and click the disk icon on the right of your HTTPS url to copy the URL. a `copied` message is displayed when you click the disk icon.
 
@@ -50,4 +57,4 @@ Click the ellipsis (three vertical dots) in the left project panel, select `Impo
 
 Save your project, then you can select the tabs on the righ and the lunch icon to see you app up and running.
 
-The URL in your Exp stack project the link when you submit your homework.
+The URL in your Exp stack project the link when you share your project.
