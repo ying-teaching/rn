@@ -1,6 +1,6 @@
 # JavaScript, CSS and JSX
 
-Reactive uses JavaScript as its programming language. It uses the CSS to style the UI. JSX is a special syntax to mix JavaScript, UI components and styles together.
+Reactive uses JavaScript or TypeScript (JS with Type) as its programming language. It uses the CSS to style the UI. JSX is a special syntax to mix JavaScript, UI components and styles together.
 
 ## JavaScript Review
 
@@ -28,4 +28,6 @@ For more details and advanced JavaScript features, check [The Modern JavaScript 
 
 We will learn layout later.
 
-## [JSX](./jsx.md)
+## JSX
+
+[An introduction to JSX](jsx.md).
