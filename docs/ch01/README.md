@@ -44,16 +44,10 @@ There is a barcode in both the command line and in the dev too page, you can sca
 
 ### 3.3 Other Run Options
 
-When you use `yarn start` instead of `yarn web`, only the dev tool page is shown. In the command line, press `w` to open a web view. Or in the dev page, click `Run in web browser`. to see the web version of your app.
+If you use `yarn start` instead of `yarn web`, only the dev tool page is shown. You can run the Web view uisng one of two methods:
 
-### 3.4 For Advanced User
-
-If you want to run iOS or Android simulator in your computer, you need to install iOS or Android development toolkits. You need a Mac computer to run the iOS simulator. You can run the Android simulator using a Windows PC or a Mac. You need a powerful machine because a simulator uses a lot of resources. Following are links to installatioin instructions:
-
-- [iOS Simulator](https://docs.expo.io/workflow/ios-simulator/).
-- [Android Simulator](https://docs.expo.io/workflow/android-studio-emulator/).
-
-If you have iOS or Android development tooklit installed, you can run iOS or Android simulation using `yarn ios` or `yarn android`.
+- In the command line, press `w` to open a web view.
+- In the dev page, click `Run in web browser`. to see the web version of your app.
 
 ## 4 Edit Your App
 
@@ -78,3 +72,12 @@ Click the ellipsis (three vertical dots) in the left project panel, select `Impo
 Save your project, then you can select the tabs on the righ and the lunch icon to see you app up and running.
 
 The URL in your Exp stack project the link when you share your project.
+
+## 7 For Advanced User Who Want to Run a Simulator
+
+If you want to run iOS or Android simulator in your computer, you need to install iOS or Android development toolkits. You need a Mac computer to run the iOS simulator. You can run the Android simulator using a Windows PC or a Mac. You need a powerful machine because a simulator uses a lot of resources. Following are links to installatioin instructions:
+
+- [iOS Simulator](https://docs.expo.io/workflow/ios-simulator/).
+- [Android Simulator](https://docs.expo.io/workflow/android-studio-emulator/).
+
+If you have iOS or Android development tooklit installed, you can run iOS or Android simulation using `yarn ios` or `yarn android`.
