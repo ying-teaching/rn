@@ -20,7 +20,11 @@ From [React Native Document](https://reactnative.dev/docs/intro-react-native-com
 
 React Native uses components that are backed by the corresponding Android and iOS views. These platform-backed components are called `Native Components`. RN provides a set of commonly used Native comonents. These are RN's [Core Components](https://reactnative.dev/docs/components-and-apis).
 
-A component is also called a React Element. It is an individual resualble piece of UI. A component has one or more views. React components are created by using their tags, either with or without closing tag. For example: `<Text>content</Text>` or `<Button title="Click" />`. It uses the same HTML syntax with different tag name. The RN built-in and custom components use capitalized names.
+A component is also called a React Element. It is an individual resualble piece of UI. Components are composable that means a component can have one or more elements.
+
+## Component Markup
+
+React components are created by using their tags, either with or without closing tag. For example: `<Text>content</Text>` or `<Button title="Click" />`. It uses the same HTML syntax with different tag name. The RN built-in and custom components use capitalized names.
 
 Use component property names to initialize its props. A single prop without assingment has a default value of `true`. For example: `<MyTextBox autocomplete />` is the same as `<MyTextBox autocomplete={true} />`.
 

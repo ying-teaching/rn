@@ -22,24 +22,44 @@ Additionally, you can use RN to develop Windows or MacOS desktop applicatoins. P
 
 ## 3 Hello World
 
+### 3.1 Initialize an App
+
 From command line, run `expo init hello-world -t blank`. It initialized a project named `hello-world`. The `-t blank` is an abbreviation for `--template blank`. The command creates a RN project from a blank project template that has a very simple UI using JavaScript. It creates a `hello-world` folder that is the project root.
+
+### 3.2 Run the App
 
 Then, run the following two commands:
 
 ```sh
 cd hello-world
-yarn start
+yarn web
 ```
 
-It opens a development tool page in `localhost: 19002`.
+It opens two web pages:
 
-## 4 Run and Edit Your App
+- a Expo development tool page in `localhost: 19002`
+- a web view of the app in `localhost:19006`
 
-In the command line, press `w` to open a web view. Or in the dev page, click `Run in web browser`. to see the web version of your app.
+There is a barcode in both the command line and in the dev too page, you can scan the barcode using `Expo Go` app to check the new app in your phone.
+
+### 3.3 Other Run Options
+
+When you use `yarn start` instead of `yarn web`, only the dev tool page is shown. In the command line, press `w` to open a web view. Or in the dev page, click `Run in web browser`. to see the web version of your app.
+
+### 3.4 For Advanced User
+
+If you want to run iOS or Android simulator in your computer, you need to install iOS or Android development toolkits. You need a Mac computer to run the iOS simulator. You can run the Android simulator using a Windows PC or a Mac. You need a powerful machine because a simulator uses a lot of resources. Following are links to installatioin instructions:
+
+- [iOS Simulator](https://docs.expo.io/workflow/ios-simulator/).
+- [Android Simulator](https://docs.expo.io/workflow/android-studio-emulator/).
+
+If you have iOS or Android development tooklit installed, you can run iOS or Android simulation using `yarn ios` or `yarn android`.
+
+## 4 Edit Your App
 
 Open the `hello-world` folder in VS Code, change `<text>` element in the `app.js` as `<Text>Hello World</Text>`. Save the file.
 
-Your web page changes. You can scan the barcode using Expo Go to check the app in your phone.
+Your web page changes.
 
 ## 5 Push to GitHub
 
