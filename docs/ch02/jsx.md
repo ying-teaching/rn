@@ -28,18 +28,27 @@ React components are created by using their tags, either with or without closing
 
 Use component property names to initialize its props. A single prop without assingment has a default value of `true`. For example: `<MyTextBox autocomplete />` is the same as `<MyTextBox autocomplete={true} />`.
 
+A component can have children elements.
+
+```jsx
+<View style={styles.container}>
+  <Text>Hello World</Text>
+  <StatusBar style="auto" />
+</View>
+```
+
 ## Embedding Expressions in JSX
 
 JavaScript expressions inside JSX will be evaluated to a string, a RN component or a list of strings/components. You can embed JavaScripit expressions in JSX by putting them inside a pair of curly bracket `{expression}`. For example:
 
-```javascript
+```jsx
 function formatName(user) {
   return user.firstName + " " + user.lastName;
 }
 
 const user = {
-  firstName: "Harper",
-  lastName: "Perez",
+  firstName: "James",
+  lastName: "Bond",
 };
 
 const element = <Text>Hello, {formatName(user)}!</Text>;
@@ -47,4 +56,5 @@ const element = <Text>Hello, {formatName(user)}!</Text>;
 
 ## Resource
 
-[Introducing JSX](https://reactjs.org/docs/introducing-jsx.html)
+- [Introducing JSX](https://reactjs.org/docs/introducing-jsx.html)
+- [JSX Guide](https://www.reactnative.express/javascript/jsx)
