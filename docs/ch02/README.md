@@ -22,7 +22,6 @@ For more details and advanced JavaScript features, check [The Modern JavaScript 
 
 - [Box Model](https://web.dev/learn/css/box-model/)
 - [Selectors](https://web.dev/learn/css/selectors/)
-- [The cascade](https://web.dev/learn/css/the-cascade/)
 - [Color](https://web.dev/learn/css/color/)
 - [Sizing Units](https://web.dev/learn/css/sizing/)
 
