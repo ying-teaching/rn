@@ -1,27 +1,6 @@
-# Hooks
+# Effect and Context Hooks
 
-## Introduction
-
-Hooks are new features introduced in React 16.8 on February 6, 2019 and Reactive Native 0.59 on March 12, 2019. They help to eanble functional programming paradigm, i.e., writing applications without using a class.
-
-As a result, there are two ways of writing components in RN: functional components and class components. Functional components without states are easy to write and simple to reuse because they are fully defined once the function parameters are provided. The so-called presentational components are primarily concerned with displaying data. They are best implmented using functional components.
-
-The primary benefits of class components are state management and component lifecycle methods. Hooks are used to provide the similar features to functional components. The motivation of hooks are:
-
-- A stateful logic can be implmented and tested independently and reused. The stateful behavior can be `hooked` into a functional component.
-- Hooks make it possible to write small functions in different categroies: local state management, data subscription or data fetching.
-- Classes are confusing for several reasons: verbose syntax, meanings of `this`, class hierarchy etc. Functions are much simpler in writing and understanding.
-
-Essentially, hooks are functions that let you "hook into" functional components to provide state and lifecycle features. Two types of commonly used built-in hooks are:
-
-- State hook: a state hook adds a local state to a component. You can have multiple state hook for multiple local states.
-- Effect hook: an effect hook is used for a "side effect" operation. Data fetching, data subscription and DOM manipulation operations are "side effects" because they are not belong to component rendering but need to be performed when a component is mounted, updated or dismounted.
-
-In addition to the built-in hooks, you can create custom hooks that manage stateful logic and resue them in different components. Due to the functional nature of the hooks, hooks are reused for their logic, not their states. The state of each component is independent.
-
-## Lifecycle and Mind Model
-
-A good way to think about hooks and functional components is to think that hooks add some extra hidden contextual varaibles to functional components. Every time there is a change in the props/states of a functional component, the component is called and rendered with new contextual variables. It simulates memory for functional components.
+These are advanced concepts that you can skip when you are new to Reactive Native.
 
 ## Effect Hook
 
