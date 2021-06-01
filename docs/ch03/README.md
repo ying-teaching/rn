@@ -1,14 +1,45 @@
 # Style and Layout
 
+Resources:
+
+- [RN style document](https://reactnative.dev/docs/style)
+- [Layout with Flexbox](https://reactnative.dev/docs/flexbox)
+
 ## Component Style
 
 All RN core components accept a `style` property. The value is an object whose property names are CSS style names and values are CSS values. Because JavaScript doesn't allow `-` in a property name, you should use camel casing names. For example, use `backgroundColor` instead of `background-color`, use `fontSize` instead of `font-size`.
 
-The common practice is to use `StyleSheet.create` define several styles for subcomponents in one place.
-
 All dimensions such as `width` and `height` in React Native are unitless, and represent density-independent pixels.
 
-The [RN style document](https://reactnative.dev/docs/style) has a style example.
+The common practice is to use `StyleSheet.create` define several styles for subcomponents in one place. You can define inline styles using JS object. The following example uses both styles:
+
+```jsx
+import React from "react";
+import { Text, View } from "react-native";
+
+export default function App() {
+  return (
+    <View style={styles.container}>
+      <Text
+        style={{
+          fontSize: 20,
+          color: "teal",
+        }}
+      >
+        Hello, world!
+      </Text>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+});
+```
 
 ## Layout with Flexbox
 
@@ -36,5 +67,3 @@ RN uses the CSS flexbox layout with a few exceptions.
 - the `flex` parameter only supporting a single number.
 
 Many RN components are both containers and items thus they use all the above styles.
-
-Check RN [Layout with Flexbox](https://reactnative.dev/docs/flexbox) for detail information and examples.
