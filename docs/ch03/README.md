@@ -6,6 +6,8 @@ All RN core components accept a `style` property. The value is an object whose p
 
 The common practice is to use `StyleSheet.create` define several styles for subcomponents in one place.
 
+All dimensions such as `width` and `height` in React Native are unitless, and represent density-independent pixels.
+
 The [RN style document](https://reactnative.dev/docs/style) has a style example.
 
 ## Layout with Flexbox
@@ -23,6 +25,7 @@ You can ues [Flexbox Froggy](https://flexboxfroggy.com/) to play and learn the l
   - `align-content`: this aligns the container's lines when there is extra space in cross-axis. Values are `flex-start`, `flex-end`, `center`, `stretch`, `space-between`, and `space-around`.
 - Item Styles
   - `flex`: a single value defines the relative size of the item.
+  - `align-self`: this overrides container's `align-items`value for this item.
 
 ## RN Flexbox
 
@@ -31,5 +34,7 @@ RN uses the CSS flexbox layout with a few exceptions.
 - `flexDirection` defaulting to `column` instead of `row`.
 - `alignContent` defaulting to flex-start instead of stretch
 - the `flex` parameter only supporting a single number.
+
+Many RN components are both containers and items thus they use all the above styles.
 
 Check RN [Layout with Flexbox](https://reactnative.dev/docs/flexbox) for detail information and examples.
