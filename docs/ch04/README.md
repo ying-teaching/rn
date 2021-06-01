@@ -143,12 +143,9 @@ RN provides a set of commonly used [Core Components](https://reactnative.dev/doc
 - iOS Components.
 - Others: such as `<Alert>`, `<Modal>`, `StatusBar` etc.
 
-## 6 Core Component Examples
-
-Below are some commonly used core components.
+## 6 Some Component Examples
 
 - [`<View>`](https://reactnative.dev/docs/view): A container that supports layout with flexbox, style, some touch handling, and accessibility controls. View maps directly to the native view equivalent on whatever platform React Native is running on, whether that is a UIView (iOS), `<div>` (Web), android.view (Android), etc.
 - [`<Text>`](https://reactnative.dev/docs/text): a component for display text. It supports nesting, sytling and touch handling.
-- [`<TextInput>`](https://reactnative.dev/docs/textinput). [Handling Text Input](https://reactnative.dev/docs/handling-text-input) has another example.
-- [`<Image>`](https://reactnative.dev/docs/image): A React component for displaying different types of images, including network images, static resources, temporary local images, and images from local disk, such as the camera roll.
+- [Handling Text Input](https://reactnative.dev/docs/handling-text-input).
 - [`<Button>`](https://reactnative.dev/docs/button): A simple clickable button. If you want a cusotmized button, check [Custom Button](https://docs.expo.io/tutorial/button/) to create a custom button using `<TouchableOpacity>`.
