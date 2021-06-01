@@ -14,8 +14,22 @@ CSS uses box model for UI style. Flexbox stands for flexible box that is a W3C r
 
 You can learn the basics from [a complete guide to flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/). Pay attention to concepts such as `main axis`, `cross axis`, `flex direction`, `align items` and `justify content`. There are properties for the container and properties for the items.
 
-You can ues [Flexbox Froggy](https://flexboxfroggy.com/) to play and learn the layout.
+You can ues [Flexbox Froggy](https://flexboxfroggy.com/) to play and learn the layout. Follwoing are commonly used styles:
 
-RN uses the CSS flexbox layout with a few exceptions. The defaults are different, with flexDirection defaulting to column instead of row, alignContent defaulting to flex-start instead of stretch, the `flex` parameter only supporting a single number.
+- Container Styles
+  - `flexDirection`: this defines the `main axis`, can be either `column` or `row`. In RN, default is `column`. Items are placed from top to bottome.
+  - `justify-content`: this defines the alignment of items along the main axis. Common values are `flex-start`, `flex-end`, `center`, `space-between`, `space-around` and `space-evenly`.
+  - `align-items`: this defines the alignment of items along the cross axis. Common values are `stretch`, `flex-start`, `flex-end`, `center`, and `baseline`.
+  - `align-content`: this aligns the container's lines when there is extra space in cross-axis. Values are `flex-start`, `flex-end`, `center`, `stretch`, `space-between`, and `space-around`.
+- Item Styles
+  - `flex`: a single value defines the relative size of the item.
+
+## RN Flexbox
+
+RN uses the CSS flexbox layout with a few exceptions.
+
+- `flexDirection` defaulting to `column` instead of `row`.
+- `alignContent` defaulting to flex-start instead of stretch
+- the `flex` parameter only supporting a single number.
 
 Check RN [Layout with Flexbox](https://reactnative.dev/docs/flexbox) for detail information and examples.
