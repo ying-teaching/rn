@@ -3,7 +3,8 @@
 Resources:
 
 - [RN style document](https://reactnative.dev/docs/style)
-- [Layout with Flexbox](https://reactnative.dev/docs/flexbox)
+- [a complete guide to flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/): The first three subjects.
+- [RN Layout with Flexbox](https://reactnative.dev/docs/flexbox)
 
 ## Component Style
 
