@@ -5,6 +5,9 @@ Resources:
 - [Intro to Component](https://reactnative.dev/docs/intro-react)
 - [Native Components](https://reactnative.dev/docs/intro-react-native-components)
 - [Core Component APIs](https://reactnative.dev/docs/components-and-apis)
+- [Intro to Hooks](https://reactjs.org/docs/hooks-intro.html)
+- [RN State Guide](https://reactnative.dev/docs/intro-react#state)
+- [Core Components](https://reactnative.dev/docs/components-and-apis)
 
 ## 1 Components
 
@@ -118,61 +121,67 @@ export default function App() {
 }
 ```
 
-## 2 Hooks
+## 2 Component Props
 
-### 2.1 Motivation
+### 2.1 Core Component Props
 
-Hooks are new features introduced in React 16.8 on February 6, 2019 and Reactive Native 0.59 on March 12, 2019. They help to eanble functional programming paradigm, i.e., writing applications without using a class.
+You use props to customize RN components. Props is short for “properties" that are passed as function arguments to a component. In JSX syntax, prop values are passed as attribute values. Most RN built-in components can be customized by different props.
 
-As a result, there are two ways of writing components in RN: functional components and class components. Functional components without states are easy to write and simple to reuse because they are fully defined once the function parameters are provided. The so-called presentational components are primarily concerned with displaying data. They are best implmented using functional components.
+```jsx
+// partial app.js
 
-The primary benefits of class components are state management and component lifecycle methods. Hooks are used to provide the similar features to functional components. The motivation of hooks are:
-
-- A stateful logic can be implmented and tested independently and reused. The stateful behavior can be `hooked` into a functional component.
-- Hooks make it possible to write small functions in different categroies: local state management, data subscription or data fetching.
-- Classes are confusing for several reasons: verbose syntax, meanings of `this`, class hierarchy etc. Functions are much simpler in writing and understanding.
-
-### 2.2 State and Effect
-
-Essentially, hooks are functions that let you "hook into" functional components to provide state and lifecycle features. Two types of commonly used built-in hooks are:
-
-- State hook: a state hook adds a local state to a component. You can have multiple state hook for multiple local states.
-- Effect hook: an effect hook is used for a "side effect" operation. Data fetching, data subscription and DOM manipulation operations are "side effects" because they are not belong to component rendering but need to be performed when a component is mounted, updated or dismounted.
-
-In addition to the built-in hooks, you can create custom hooks that manage stateful logic and resue them in different components. Due to the functional nature of the hooks, hooks are reused for their logic, not their states. The state of each component is independent.
-
-### 2.3 Lifecycle and Mind Model
-
-A good way to think about hooks and functional components is to think that hooks add some extra hidden contextual varaibles to functional components. Every time there is a change in the props/states of a functional component, the component is called and rendered with new contextual variables. It simulates memory for functional components.
-
-## 3 Component and Props
-
-To define a functional component (hereafter simply component), you define a function that return some UI building block.
-
-```js
-// named function
-function Hello(props) {
-  return <Text>Hello, {props.name}</Text>;
-}
-
-// or arrow-function
-const Hello2 = (props) => {
-  return <Text>Hello2, {props.name}</Text>;
-};
+// import Image
+import { StyleSheet, Text, View, Image } from "react-native";
 
 export default function App() {
   return (
-    <View>
-      <Hello name="Alice" />
-      <Hello2 name="Bob" />
+    <View style={styles.container}>
+      <Image
+        source={{ uri: "https://reactnative.dev/docs/assets/p_cat1.png" }}
+        style={{ width: 200, height: 200 }}
+      />
+      <Text>Hello, I am your cat!</Text>
     </View>
   );
 }
 ```
 
-The above code defines two components: `<Hello>` and `<Hello2>` that can be composed into other components. It is a good idea to split a complex UI into small parts called components. A small component is easy to design, code, debug and reuse.
+### 2.2 Custom Component
 
-In the above code, the two components `<Hello>` and `Hello2` are defined by two functions. Each function has a `props` parameter. It is an object whose properties are provided by a component that use it. In RN, the `props` parameter is called `Props`, short for properties.
+To define a customizable functional component (hereafter simply component), you define a function with a `props` parameter.
+
+```js
+// partial app.js
+
+function Hello(props) {
+  return <Text>Hello, {props.name}</Text>;
+}
+
+// arrow-function
+const Hello2 = (props) => {
+  return <Text>Hello2, {props.name}</Text>;
+};
+
+// destruct a prop
+function Hello3({ name }) {
+  return <Text>Hello3, {name}</Text>;
+}
+
+export default function App() {
+  return (
+    <View style={styles.container}>
+      <Hello name="Alice" />
+      <Hello2 name="Bob" />
+      <Hello3 name="Cindy" />
+    </View>
+  );
+```
+
+The above code defines three components: `Hello`, `Hello2` and `Hello3` that can be composed into other components. It is a good idea to split a complex UI into small parts called components. A small component is easy to design, code, debug and reuse.
+
+In the above code, the two components `Hello` and `Hello2` are defined by two functions. Each function has a `props` parameter. It is an object whose properties are provided by a component that use it. In `Hello3` component, the function argument `({ name })` retrieves the `name` property from the `<Hello3 name="Cindy" />` component. Therefoe the `name` can be used in the component function body directly without the `props` prefix.
+
+### 2.3 Props and Pure Functions
 
 There are two important rules for a component:
 
@@ -181,9 +190,36 @@ There are two important rules for a component:
 
 A `pure` function means for the same input of `props`, it always returns the same output. A pure function doesn't return different values for the same input. For exmaple, `Math.sqrt(x)` is a pure function while `Math.random()` is not a pure funciton.
 
+## 3 Hooks
+
+### 3.1 Motivation
+
+Hooks are new features introduced in React 16.8 on February 6, 2019 and Reactive Native 0.59 on March 12, 2019. They help to eanble functional programming paradigm, i.e., writing applications without using a class.
+
+As a result, They make it possible to write functional components in additional to the traditional class components. Functional components without states are easy to write and simple to reuse because they are fully defined once the function parameters are provided. The so-called presentational components are primarily concerned with displaying data. They are best implmented using functional components.
+
+The primary benefits of class components are state management and component lifecycle methods. Hooks are used to provide the similar features to functional components. The motivation of hooks are:
+
+- A stateful logic can be implmented and tested independently and reused. The stateful behavior can be `hooked` into a functional component.
+- Hooks make it possible to write small functions in different categroies: local state management, data subscription or data fetching.
+- Classes are confusing for several reasons: verbose syntax, confusing meanings of `this`, complex class hierarchy etc. Functions are much simpler in writing and understanding.
+
+### 3.2 State and Effect
+
+Essentially, hooks are functions that let you "hook into" functional components to provide state and lifecycle features. Two types of commonly used built-in hooks are:
+
+- State hook: a state hook adds a local state to a component. You can have multiple state hook for multiple local states.
+- Effect hook: an effect hook is used for a "side effect" operation. Data fetching, data subscription and UI manipulation operations are "side effects" because they are not belong to component rendering but need to be performed when a component is mounted, updated or dismounted.
+
+In addition to the built-in hooks, you can create custom hooks that manage stateful logic and resue them in different components. Due to the functional nature of the hooks, hooks are reused for their logic, not their states. The state of each component is independent.
+
+### 3.3 Lifecycle and Mind Model
+
+A good way to think about hooks and functional components is to think that hooks add some extra hidden contextual varaibles to functional components. **Every time there is a change in the props/states of a functional component, the component is called and rendered with new contextual variables**. It simulates memory for functional components.
+
 ## 4 States
 
-There are two types of data that control a component: `props` and `state`. `props` are set by the parent and they are fixed throughout the lifetime of a component. For data that is going to change, we have to use `state`.
+There are two common types of data that control a component: `props` and `state`. `props` are set by the parent and they are fixed throughout the lifetime of a component. For data that is going to change, we have to use `state`.
 
 In general, you should initialize state at the top of a function component, and then call `setState` when you want to change it. A hook is a special function that lets you “hook into” a component. The `useState` function is a hook that lets you add state to components.
 
@@ -238,7 +274,11 @@ const [fruit, setFruit] = useState("banana");
 const [todos, setTodos] = useState([{ text: "Learn Hooks" }]);
 ```
 
+The [RN State Guide](https://reactnative.dev/docs/intro-react#state) has more information and an example of a stateful component.
+
 ## 5 Core Components
+
+### 5.1 Core Component Caegories
 
 RN provides a set of commonly used [Core Components](https://reactnative.dev/docs/components-and-apis). The core components can be classified into the following categories:
 
@@ -249,9 +289,11 @@ RN provides a set of commonly used [Core Components](https://reactnative.dev/doc
 - iOS Components.
 - Others: such as `<Alert>`, `<Modal>`, `StatusBar` etc.
 
-## 6 Some Component Examples
+### 5.2 Core Component Examples
 
 - [`<View>`](https://reactnative.dev/docs/view): A container that supports layout with flexbox, style, some touch handling, and accessibility controls. View maps directly to the native view equivalent on whatever platform React Native is running on, whether that is a UIView (iOS), `<div>` (Web), android.view (Android), etc.
 - [`<Text>`](https://reactnative.dev/docs/text): a component for display text. It supports nesting, sytling and touch handling.
 - [Handling Text Input](https://reactnative.dev/docs/handling-text-input).
 - [`<Button>`](https://reactnative.dev/docs/button): A simple clickable button. If you want a cusotmized button, check [Custom Button](https://docs.expo.io/tutorial/button/) to create a custom button using `<TouchableOpacity>`.
+
+In handling text input and button, you define event handlers to handle UI events. It is a common pattern for most UI applications.
