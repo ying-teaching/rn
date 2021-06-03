@@ -6,11 +6,117 @@ Resources:
 - [Native Components](https://reactnative.dev/docs/intro-react-native-components)
 - [Core Component APIs](https://reactnative.dev/docs/components-and-apis)
 
-## 1 Introduction
+## 1 Components
 
 A component is an individual resualble piece of UI. A component has one or more elements. An element is the smallest renderable unit available in React. You can define a component using a class or a function, corresponding to class component and functional component. You should use functional component because it is simpler and more reusable than a class component.
 
 [Intro to Component](https://reactnative.dev/docs/intro-react) has some component examples.
+
+You can define a functional component using a fat arrow function or a normal named function. A named function is recommended because you can define and export the function in a single statement. When you install the VS Code extension `ES7 React/Redux/React-Native/JS snippets`, you can use `rnf + tab` to generate a functional component template.
+
+### 1.1 A Simple Component
+
+For example, you can create a `Cat.js` file that defines a `Cat` component as the following:
+
+```jsx
+import React from "react";
+import { Text } from "react-native";
+
+export default function Cat() {
+  // no need to use () for a single element without nested elements
+  return <Text>Hello, I am your cat!</Text>;
+}
+```
+
+Then you can use it in your `App.js` as the following:
+
+```jsx
+// ... the rest of App.js is generated from expo init
+
+import Cat from "./Cat";
+
+export default function App() {
+  return (
+    <View style={styles.container}>
+      <Cat />
+    </View>
+  );
+}
+```
+
+### 1.2 JSX
+
+You use JSX syntax to define a functional component that creates a component using a regular JavaScript function. Except the `<Component>` tag syntax and `{expression}` for JavaScript expression, a JSX file is a regular JavaScript file that you can write any regular JavaScript code. The following is a revised version of `Cat.js` that defines a function and two variables and uses them in the `<Text>` element.
+
+```jsx
+import React from "react";
+import { Text } from "react-native";
+
+function getFullname(first, last) {
+  return first + " " + last;
+}
+
+const first = "James";
+const last = "Bond";
+
+export default function Cat() {
+  return <Text>Hello, {getFullname(first, last)}'s cat</Text>;
+}
+```
+
+### 1.3 Composite Component
+
+A component can be composed from multiple components. For any non-trivial project, tt is a good practice to organize components and their styles into different folders. For example, create `styles.js` and `Cat.js` as following in `components` folder in the project root:
+
+```js
+// file: components/styles.js
+import { StyleSheet } from "react-native";
+
+const styles = StyleSheet.create({
+  catInput: {
+    height: 40,
+    borderColor: "gray",
+    borderWidth: 1,
+  },
+});
+
+export default styles;
+```
+
+```jsx
+// file: components/cat.js
+import React from "react";
+import { Text, TextInput, View } from "react-native";
+import styles from "./styles";
+
+export default function Cat() {
+  return (
+    <View>
+      <Text>Hello, I am ...</Text>
+      <TextInput style={styles.catInput} defaultValue="Name me!"></TextInput>
+    </View>
+  );
+}
+```
+
+Then you can use the `Cat` component in `App.js` as a regular component such as `<Text>`.
+
+```jsx
+// partial file: app.js
+
+import Cat from "./comonents/Cat";
+
+export default function App() {
+  return (
+    <View style={styles.container}>
+      <Text>Welcome!</Text>
+      <Cat />
+      <Cat />
+      <Cat />
+    </View>
+  );
+}
+```
 
 ## 2 Hooks
 
