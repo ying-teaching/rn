@@ -15,7 +15,9 @@ A component is an individual resualble piece of UI. A component has one or more 
 
 [Intro to Component](https://reactnative.dev/docs/intro-react) has some component examples.
 
-You can define a functional component using a fat arrow function or a normal named function. A named function is recommended because you can define and export the function in a single statement. When you install the VS Code extension `ES7 React/Redux/React-Native/JS snippets`, you can use `rnf + tab` to generate a functional component template.
+You can define a functional component using a fat arrow function or a normal named function. A named function is recommended because you can define and export the function in a single statement.
+
+When you install the VS Code extension `ES7 React/Redux/React-Native/JS snippets`, you can use `rnf + tab` to generate a functional component template. To generate a functional component template with a style, use `rnfs + tab`.
 
 ### 1.1 A Simple Component
 
