@@ -219,6 +219,8 @@ In addition to the built-in hooks, you can create custom hooks that manage state
 
 A good way to think about hooks and functional components is to think that hooks add some extra hidden contextual varaibles to functional components. **Every time there is a change in the props/states of a functional component, the component is called and rendered with new contextual variables**. It simulates memory for functional components.
 
+If you want to get a deep understanding, read [Everything you need to know about react hooks](https://medium.com/@vcarl/everything-you-need-to-know-about-react-hooks-8f680dfd4349)
+
 ## 4 States
 
 There are two common types of data that control a component: `props` and `state`. `props` are set by the parent and they are fixed throughout the lifetime of a component. For data that is going to change, we have to use `state`.
