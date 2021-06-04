@@ -25,8 +25,8 @@ To be current and accurate, this lecture notes is based on official documents an
 - [ch01 Get Started](docs/ch01)
 - [ch02 JS, CSS and JSX](docs/ch02)
 - [ch03 Style and Layout](docs/ch03)
-- [ch04 Components and Hooks](docs/ch04)
-- [ch05 Navigation](docs/ch05)
+- [ch04 Components and State Hook](docs/ch04)
+- [ch05 Navigation and Context Hook](docs/ch05)
 - ch06 List, Progress and Maps
 - ch07 Input and Modal
 - ch08 Gestures and Images
