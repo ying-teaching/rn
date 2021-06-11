@@ -20,18 +20,6 @@ TODO: example.
 
 The side-effect function can return another function that is executed when the component is destroyed. The returned function is often used to cancel incompleted function calls or release resources. For example, you start an expensive database search operation but change your mind and quickly navigate away from the current screen. In this case, it is a good idea to cancel the search when the search screen is not longer needed. A screen subscribe to a notification should cancel the subscription when the screen is destroyed.
 
-TODO: example.
-
-## Context and Context Hook
-
-## Rules of Hooks
-
-The [Rules of Hooks](https://reactjs.org/docs/hooks-rules.html) documents the rules and reasons behind the rules. Make sure that you follow the rules. Specifically, you must:
-
-- Only Call Hooks at the Top Level
-- Only Call Hooks from React Functions
-- Use ESLint Plugin to enforce the above two rules.
-
 ## To Learn More
 
 The [Hooks API Reference](https://reactjs.org/docs/hooks-reference.html) has detail information for each Hook.
