@@ -11,7 +11,7 @@ Resources:
 
 ## 1 Installation
 
-After you initialize a project with `expo init` command, install the following packages
+After you initialize a project with `expo init myProject -t blank` command, go to the project folder using `cd myProject`, then install the following packages
 
 - navigation packages: `yarn add @react-navigation/native`
 - Some peer dependencies for Expo managed project: `expo install react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view`
