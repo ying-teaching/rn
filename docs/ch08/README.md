@@ -1,4 +1,4 @@
-# Apollo Client
+# GraphQL and Apollo Client
 
 Apollo Client, abbreviated as AC, is a library that is integrated with React to manage local and remote data with GraphQL. It proivdes fetch, cache and mutation functions in a declarative way. This note is based on [Apollo Docs](https://www.apollographql.com/docs/react/).
 
@@ -11,11 +11,16 @@ AC react has the following features:
 
 Componies such as The New York Times, Major League Soccer and Expo use Apollo Client in production.
 
+Resources:
+
+- [Getting Started with GraphQL](https://youtu.be/ARgQ4oK0Mz8): introduce GraphQL how to make GraphQL requests against Shopify store.
+- [GraphQL With React Tutorial](https://youtu.be/YyUWW04HwKY): use Apollo client in React to query data.
+
 ## Get Started
 
 ### 1 Install Dependencies
 
-`npm install @apollo/client graphql`
+`npm install @apollo/client graphql` or `yarn add @apollo/client graphql`
 
 ### 2 Create a Client
 

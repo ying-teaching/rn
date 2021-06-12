@@ -2,7 +2,7 @@
 
 ## Introduction
 
-When you fetch data from a web site, read from local storage, set a timer function, or subscribe to an external source to get notification of changes, you are performing a so-called `side effect`. Usually these tasks should be performed asynchronously to not freeze UI.
+When you fetch data from a web site, read from local storage, write to a file or a database, set a timer function, or subscribe to an external source to get notification of changes, you are performing a so-called `side effect`. Usually these tasks should be performed asynchronously to not freeze UI.
 
 In a simple case, you call `useEffect` with a side-effect function as its argument like the following:
 
@@ -12,9 +12,11 @@ useEffect(() => {
 });
 ```
 
+## Declare Dependency
+
 The side-effect function is a mandatory argument. Without optional second argument, the side-effect funciton is executed everytime after render. If that is not what you want, you should add second argument: an array of dependents (props or states) that should cause the side-effect execution.
 
-TODO: example.
+## Cancel Operation
 
 The side-effect function can return another function that is executed when the component is destroyed. The returned function is often used to cancel incompleted function calls or release resources. For example, you start an expensive database search operation but change your mind and quickly navigate away from the current screen. In this case, it is a good idea to cancel the search when the search screen is not longer needed. A screen subscribe to a notification should cancel the subscription when the screen is destroyed.
 
