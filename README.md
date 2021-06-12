@@ -27,5 +27,6 @@ To be current and accurate, this lecture notes is based on official documents an
 - [ch03 Style and Layout](docs/ch03)
 - [ch04 Components and State Hook](docs/ch04)
 - [ch05 Navigation and Context Hook](docs/ch05)
-- [ch06 List and Effect hook](docs/ch06)
-- [ch07 GraphQL and Apollo Client](docs/ch07)
+- [ch06 List](docs/ch06)
+- [ch07 Effect Hook](docs/ch07)
+- [ch08 GraphQL and Apollo Client](docs/ch08)
