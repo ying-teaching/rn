@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FlatList, StyleSheet, Text } from "react-native";
 
 import Users from "../data/Users";
@@ -24,6 +24,10 @@ export default function UserList() {
   const initState = { filter: "", asc: true, data: Users };
 
   const [state, setState] = useState(initState);
+
+  useEffect(() => {
+    console.log("effect fun runs");
+  });
 
   function onFilter(text) {
     const filter = text;

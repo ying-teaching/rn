@@ -7,7 +7,7 @@ import UserList from "./components/UserList";
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>List of Users</Text>
+      <Text>List of Users with Effect</Text>
       <UserList />
       <StatusBar style="auto" />
     </View>

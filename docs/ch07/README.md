@@ -8,13 +8,25 @@ In a simple case, you call `useEffect` with a side-effect function as its argume
 
 ```js
 useEffect(() => {
-  // execute side effect
+  console.log("Effect ran");
 });
 ```
 
 ## Declare Dependency
 
 The side-effect function is a mandatory argument. Without optional second argument, the side-effect funciton is executed everytime after render. If that is not what you want, you should add second argument: an array of dependents (props or states) that should cause the side-effect execution.
+
+```jsx
+// this code runs only at the initial render
+useEffect(() => {
+  console.log("Effect ran");
+}, []);
+
+// runs whenever state.filter changes
+useEffect(() => {
+  console.log("Effect ran");
+}, [state.filter]);
+```
 
 ## Cancel Operation
 
