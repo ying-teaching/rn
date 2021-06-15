@@ -9,7 +9,7 @@ Resources
 
 The `FlatList` component is often used to display a long list of data in a scrolling view. It renders elements that are currently showing on the screen that a user can scroll to see different parts of a long list.
 
-The `FlatList` components requires at least two props: `data` and `renderItem`. The `data` prop is an array of objects that are the source of list data. Each object should have a `key` property that has unique value for each object. The `renderItem` is a function that takes one data item and returns a UI component.
+The `FlatList` components requires at least two props: `data` and `renderItem`. The `data` prop is an array of objects that are the source of list data. Each object should have a `key` property that has a unique value for each object. The `renderItem` is a function that takes one data item and returns a UI component.
 
 ```JSX
 import { StatusBar } from "expo-status-bar";
@@ -64,9 +64,9 @@ const styles = StyleSheet.create({
 The `FlatList` component has props to deal with the following and many other requirements that you may have:
 
 - You want to select an item from a list and change the UI. To re-render the UI when something changes, you set the `extraData` prop.
-- The item data may not have a `key` property. If the original data item doesn't have a `key` property, use `keyExtractor` to define a function that extract a key from the item object.
+- The item data may not have a `key` property. If the original data item doesn't have a `key` property, use `keyExtractor` to define a function that creates a key from the item object and/or its index.
 
-The following example also uses [`TouchableOpacity`](https://reactnative.dev/docs/touchableopacity) that is a wrapper for making views respond properly to touches. On press down, the opacity of the wrapped view is decreased, dimming it.
+The following example also uses [`TouchableOpacity`](https://reactnative.dev/docs/touchableopacity) that is a row wrapper for making items respond properly to touches. On press down, the opacity of the wrapped view is decreased, dimming it.
 
 ```jsx
 import { StatusBar } from "expo-status-bar";
@@ -102,8 +102,8 @@ export default function App() {
   const [selectedName, setSelectedName] = React.useState(null);
 
   function renderItem({ item }) {
-    const backgroundColor = item.name === selectedName ? "blue" : "teal";
-    const color = item.name === selectedName ? "white" : "black";
+    const backgroundColor = item.name === selectedName ? "blue" : "darkgray";
+    const color = item.name === selectedName ? "white" : "teal";
 
     return (
       <Item
@@ -225,6 +225,7 @@ import { FlatList, StyleSheet, Text } from "react-native";
 import Users from "../data/Users";
 import ListHeader from "./ListHeader";
 
+// be careful to not change the original data
 function filterAndSort(text, asc) {
   const filtered = Users.filter((user) => {
     if (text) {
@@ -267,9 +268,7 @@ export default function UserList() {
   return (
     <FlatList
       data={state.data}
-      ListHeaderComponent={
-        <ListHeader onFilter={onFilter} onSort={onSort} asc={state.asc} />
-      }
+      ListHeaderComponent={ListHeader({ onFilter, onSort, asc: state.asc })}
       renderItem={renderItem}
       keyExtractor={(item) => item.name}
     />
