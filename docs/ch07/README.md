@@ -2,8 +2,6 @@
 
 Resources
 
-- [JS in English](https://youtu.be/YiYtwbnPfkY)
-- [JS Promise](https://youtu.be/zu6I2FXakLI)
 - [REST API](https://youtu.be/SLwpqD8n3d0)
 - [REST vs GraphQL](https://youtu.be/PeAOEAmR0D0)
 

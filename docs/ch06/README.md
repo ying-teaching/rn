@@ -4,6 +4,9 @@ Resources
 
 - [Using List Views](https://reactnative.dev/docs/using-a-listview)
 - [FlatList Component](https://reactnative.dev/docs/flatlist)
+- [JS Promise in English](https://youtu.be/YiYtwbnPfkY)
+- [JS Promise](https://youtu.be/zu6I2FXakLI)
+- [JS setTimeout](https://youtu.be/kOcFZV3c75I)
 
 ## 1 `FlatList` Component
 
@@ -314,7 +317,111 @@ const styles = StyleSheet.create({
 });
 ```
 
-## 4 Exercise
+## 4 Fetch Data Asynchronously
+
+You can simulate async operation using `Promise` and `setTimeout`, both provided by JavaScript.
+
+Add a new file `data/fetch-data.js`:
+
+```js
+import USERS from "./Users";
+
+const DELAY = 5000;
+
+export default function fetchData() {
+  const promise = new Promise((resolve, reject) => {
+    console.log("start fetching data...");
+    setTimeout(() => {
+      console.log("Resolve data.");
+      resolve(USERS);
+    }, DELAY);
+  });
+
+  return promise;
+}
+```
+
+Then revise the `components/UserList.js`:
+
+```jsx
+import React, { useState } from "react";
+import { FlatList, StyleSheet, Text } from "react-native";
+
+import fetchData from "../data/fetch-data";
+import ListHeader from "./ListHeader";
+
+// be careful to not change the original data
+function filterAndSort(data, text, asc) {
+  const filtered = data.filter((user) => {
+    if (text) {
+      return user.name.includes(text);
+    } else {
+      return true;
+    }
+  });
+
+  return filtered.sort(
+    asc
+      ? (u1, u2) => u1.name.localeCompare(u2.name)
+      : (u1, u2) => u2.name.localeCompare(u1.name)
+  );
+}
+
+export default function UserList() {
+  const initState = { filter: "", asc: true, data: null };
+  const [state, setState] = useState(initState);
+
+  // it is tricky to decide when to fetch data when things are complex
+  // you should use useEffect to handle this
+  if (!state.data) {
+    const fetchPromise = fetchData();
+    fetchPromise.then((data) => setState({ ...state, data }));
+  }
+
+  function onFilter(text) {
+    const filter = text;
+    const asc = state.asc;
+    const data = filterAndSort(state.data, filter, asc);
+    setState({ filter, asc, data });
+  }
+
+  function onSort() {
+    const filter = state.filter;
+    const asc = !state.asc;
+    const data = filterAndSort(state.data, filter, asc);
+    setState({ filter, asc, data });
+  }
+
+  function renderItem({ item }) {
+    return <Text style={styles.item}>{item.name + ": " + item.gpa}</Text>;
+  }
+
+  let result = <Text>Loading data...</Text>;
+  if (state.data) {
+    result = (
+      <FlatList
+        data={state.data}
+        ListHeaderComponent={ListHeader({ onFilter, onSort, asc: state.asc })}
+        renderItem={renderItem}
+        keyExtractor={(item) => item.name}
+      />
+    );
+  }
+  return result;
+}
+
+const styles = StyleSheet.create({
+  item: {
+    margin: 5,
+    padding: 5,
+    color: "slategrey",
+    backgroundColor: "ghostwhite",
+    textAlign: "center",
+  },
+});
+```
+
+## 5 Exercise
 
 - Change the above code to use use three separate states: `filter`, `asc` and `data`.
 - Change the "Asc" and "Dsc" to use two icons.
