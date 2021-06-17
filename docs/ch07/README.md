@@ -27,10 +27,10 @@ useEffect(() => {
   console.log("Effect ran");
 }, []);
 
-// runs whenever state.filter changes
+// runs whenever the state changes
 useEffect(() => {
   console.log("Effect ran");
-}, [state.filter]);
+}, [state]);
 ```
 
 ## Cancel Operation

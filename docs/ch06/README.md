@@ -172,6 +172,36 @@ const USERS = [
 ];
 
 export default USERS;
+
+function filterUsers(text) {
+  return USERS.filter((user) => {
+    if (text) {
+      return user.name.includes(text);
+    } else {
+      return true;
+    }
+  });
+}
+
+export function filterSortByName(text, asc) {
+  const newData = filterUsers(text);
+
+  const sortFunction = asc
+    ? (u1, u2) => u1.name.localeCompare(u2.name)
+    : (u1, u2) => u2.name.localeCompare(u1.name);
+
+  return newData.sort(sortFunction);
+}
+
+export function filterSortByGpa(text, asc) {
+  const newData = filterUsers(text);
+
+  const sortFunction = asc
+    ? (u1, u2) => u1.gpa - u2.gpa
+    : (u1, u2) => u2.gpa - u1.gpa;
+
+  return newData.sort(sortFunction);
+}
 ```
 
 ```jsx
@@ -179,32 +209,34 @@ export default USERS;
 import React from "react";
 import { StyleSheet, Text, TextInput, View } from "react-native";
 
-export default function ListHeader({ onFilter, onSort, asc }) {
-  return (
-    <View style={styles.controls}>
-      <ListFilter onFilter={onFilter} />
-      <ListSort onSort={onSort} asc={asc} />
-    </View>
-  );
-}
-
 function ListSort({ onSort, asc }) {
+  console.log(`asc: ${asc}`);
   return <Text onPress={onSort}>{asc ? "Asc" : "Des"}</Text>;
 }
 
 function ListFilter({ onFilter }) {
   return (
     <TextInput
+      onChangeText={onFilter}
       style={styles.input}
       autoFocus
       placeholder="Search"
-      onChangeText={onFilter}
     />
   );
 }
 
+export default function ListHeader({ onFilter, onSort, asc }) {
+  console.log(`List Header asc: ${asc}`);
+  return (
+    <View style={styles.header}>
+      <ListFilter onFilter={onFilter} />
+      <ListSort onSort={onSort} asc={asc} />
+    </View>
+  );
+}
+
 const styles = StyleSheet.create({
-  controls: {
+  header: {
     flex: 1,
     flexDirection: "row",
     justifyContent: "space-between",
@@ -225,55 +257,42 @@ const styles = StyleSheet.create({
 import React, { useState } from "react";
 import { FlatList, StyleSheet, Text } from "react-native";
 
-import Users from "../data/Users";
+import USERS, { filterSortByGpa, filterSortByName } from "../data/users";
 import ListHeader from "./ListHeader";
 
-// be careful to not change the original data
-function filterAndSort(text, asc) {
-  const filtered = Users.filter((user) => {
-    if (text) {
-      return user.name.includes(text);
-    } else {
-      return true;
-    }
-  });
+function keyExtractor(_, index) {
+  return index.toString();
+}
 
-  return filtered.sort(
-    asc
-      ? (u1, u2) => u1.name.localeCompare(u2.name)
-      : (u1, u2) => u2.name.localeCompare(u1.name)
-  );
+function renderItem({ item }) {
+  return <Text style={styles.item}>{`${item.name}: ${item.gpa}`}</Text>;
 }
 
 export default function UserList() {
-  const initState = { filter: "", asc: true, data: Users };
-
-  const [state, setState] = useState(initState);
+  const [filter, setFilter] = useState(null);
+  const [data, setData] = useState(USERS);
+  const [asc, setAsc] = useState(true);
 
   function onFilter(text) {
-    const filter = text;
-    const asc = state.asc;
-    const data = filterAndSort(filter, asc);
-    setState({ filter, asc, data });
+    setFilter(text);
+    const newData = filterSortByName(text, asc);
+    setData(newData);
   }
 
   function onSort() {
-    const filter = state.filter;
-    const asc = !state.asc;
-    const data = filterAndSort(filter, asc);
-    setState({ filter, asc, data });
-  }
+    const reverse = !asc;
+    setAsc(reverse);
 
-  function renderItem({ item }) {
-    return <Text style={styles.item}>{item.name + ": " + item.gpa}</Text>;
+    const newData = filterSortByName(filter, reverse);
+    setData(newData);
   }
 
   return (
     <FlatList
-      data={state.data}
-      ListHeaderComponent={ListHeader({ onFilter, onSort, asc: state.asc })}
+      ListHeaderComponent={ListHeader({ onFilter, onSort, asc })}
+      data={data}
       renderItem={renderItem}
-      keyExtractor={(item) => item.name}
+      keyExtractor={keyExtractor}
     />
   );
 }
@@ -317,15 +336,17 @@ const styles = StyleSheet.create({
 });
 ```
 
+Be careful when an app has multiple states and they are related. In a single function, you can not `setState` and use its result immediately: state is only changed when a component is rerendered. In the above code, if you use three separate states: `filter`, `asc` and `data`. In one funciton, after `setFilter(newValue)`, you cannot use `filter` to call `setData(filter)` because the `filter` is still has the old value.
+
+As an alternative, you can put related states into a single object variable. In the above example, you can use a single state variable with three properties: `filter`, `data` and `asc`.
+
 ## 4 Fetch Data Asynchronously
 
 You can simulate async operation using `Promise` and `setTimeout`, both provided by JavaScript.
 
-Add a new file `data/fetch-data.js`:
+Add the following function to `data/users.js`:
 
 ```js
-import USERS from "./Users";
-
 const DELAY = 5000;
 
 export default function fetchData() {
@@ -347,67 +368,51 @@ Then revise the `components/UserList.js`:
 import React, { useState } from "react";
 import { FlatList, StyleSheet, Text } from "react-native";
 
-import fetchData from "../data/fetch-data";
+import { fetchData, filterSortByGpa, filterSortByName } from "../data/users";
 import ListHeader from "./ListHeader";
 
-// be careful to not change the original data
-function filterAndSort(data, text, asc) {
-  const filtered = data.filter((user) => {
-    if (text) {
-      return user.name.includes(text);
-    } else {
-      return true;
-    }
-  });
+function keyExtractor(_, index) {
+  return index.toString();
+}
 
-  return filtered.sort(
-    asc
-      ? (u1, u2) => u1.name.localeCompare(u2.name)
-      : (u1, u2) => u2.name.localeCompare(u1.name)
-  );
+function renderItem({ item }) {
+  return <Text style={styles.item}>{`${item.name}: ${item.gpa}`}</Text>;
 }
 
 export default function UserList() {
-  const initState = { filter: "", asc: true, data: null };
-  const [state, setState] = useState(initState);
+  const [filter, setFilter] = useState(null);
+  const [data, setData] = useState(null);
+  const [asc, setAsc] = useState(true);
 
   // it is tricky to decide when to fetch data when things are complex
   // you should use useEffect to handle this
-  if (!state.data) {
+  if (!data) {
     const fetchPromise = fetchData();
-    fetchPromise.then((data) => setState({ ...state, data }));
+    fetchPromise.then(setData);
   }
 
   function onFilter(text) {
-    const filter = text;
-    const asc = state.asc;
-    const data = filterAndSort(state.data, filter, asc);
-    setState({ filter, asc, data });
+    setFilter(text);
+    const newData = filterSortByName(text, asc);
+    setData(newData);
   }
 
   function onSort() {
-    const filter = state.filter;
-    const asc = !state.asc;
-    const data = filterAndSort(state.data, filter, asc);
-    setState({ filter, asc, data });
+    const reverse = !asc;
+    setAsc(reverse);
+
+    const newData = filterSortByName(filter, reverse);
+    setData(newData);
   }
 
-  function renderItem({ item }) {
-    return <Text style={styles.item}>{item.name + ": " + item.gpa}</Text>;
-  }
-
-  let result = <Text>Loading data...</Text>;
-  if (state.data) {
-    result = (
-      <FlatList
-        data={state.data}
-        ListHeaderComponent={ListHeader({ onFilter, onSort, asc: state.asc })}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.name}
-      />
-    );
-  }
-  return result;
+  return (
+    <FlatList
+      ListHeaderComponent={ListHeader({ onFilter, onSort, asc })}
+      data={data}
+      renderItem={renderItem}
+      keyExtractor={keyExtractor}
+    />
+  );
 }
 
 const styles = StyleSheet.create({
@@ -420,10 +425,3 @@ const styles = StyleSheet.create({
   },
 });
 ```
-
-## 5 Exercise
-
-- Change the above code to use use three separate states: `filter`, `asc` and `data`.
-- Change the "Asc" and "Dsc" to use two icons.
-
-Be careful when an app has multiple states and they are related. In a single function, you can not `setState` and use its result immediately: state is only changed when a component is rerendered. In the above code, if you use three separate states: `filter`, `asc` and `data`. In one funciton, after `setFilter(newValue)`, you cannot use `filter` to call `setData(filter)` because the `filter` is still has the old value.
