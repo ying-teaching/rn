@@ -4,9 +4,9 @@ Resources
 
 - [Using List Views](https://reactnative.dev/docs/using-a-listview)
 - [FlatList Component](https://reactnative.dev/docs/flatlist)
+- [JS setTimeout](https://youtu.be/kOcFZV3c75I)
 - [JS Promise in English](https://youtu.be/YiYtwbnPfkY)
 - [JS Promise](https://youtu.be/zu6I2FXakLI)
-- [JS setTimeout](https://youtu.be/kOcFZV3c75I)
 
 ## 1 `FlatList` Component
 
@@ -336,7 +336,7 @@ const styles = StyleSheet.create({
 });
 ```
 
-Be careful when an app has multiple states and they are related. In a single function, you can not `setState` and use its result immediately: state is only changed when a component is rerendered. In the above code, if you use three separate states: `filter`, `asc` and `data`. In one funciton, after `setFilter(newValue)`, you cannot use `filter` to call `setData(filter)` because the `filter` is still has the old value.
+Be careful when an app has multiple states and they are related. In a single function, you can not `setState` and use its result immediately: state is only changed when a component is rerendered. In the above code, you use three separate states: `filter`, `asc` and `data`. In the `onFilter` funciton, after `setFilter(newValue)`, you cannot use `filter` to call `setData(filter)` because the `filter` is still has the old value.
 
 As an alternative, you can put related states into a single object variable. In the above example, you can use a single state variable with three properties: `filter`, `data` and `asc`.
 
