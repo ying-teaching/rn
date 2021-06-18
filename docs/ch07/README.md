@@ -7,7 +7,15 @@ Resources
 
 ## Introduction
 
-When you fetch data from a web site, read from local storage, write to a file or a database, set a timer function, or subscribe to an external source to get notification of changes, you are performing a so-called `side effect`. Usually these tasks should be performed asynchronously to not freeze UI.
+When you
+
+- fetch data from a web site
+- read from local storage
+- write to a file or a database
+- set a timer function
+- subscribe to an external source to get notification of changes
+
+you are performing a so-called `side effect`. Usually these tasks should be performed asynchronously to not freeze UI.
 
 In a simple case, you call `useEffect` with a side-effect function as its argument like the following:
 
