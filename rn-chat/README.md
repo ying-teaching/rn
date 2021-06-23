@@ -76,7 +76,7 @@ setting:
 
 - click web app icon, register app with the same name.
 - add Firebase SDK
-- `yarn add -g firebase-tools`
+- `npm install -g firebase-tools`
 
 ### 2.5 Implement Auth 1:06:20
 
