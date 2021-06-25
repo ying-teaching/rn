@@ -111,25 +111,13 @@ add [SafeAreaView](https://reactnative.dev/docs/safeareaview)
 
 add `ScrollView`.
 
-### 3.2 Create `components/CustomListItem.js`
-
-Use `ListItem` and `Avatar` from `react-native-elements`. Set avatar uri to a fixed value for now.
-
-Add `ListItem.Content`, set `<ListItem.Title>` a fixed text. Add `ListItem.SubTitle`, set `numberOfLines` and `ellipsizeMode`, add a fixed test subtitle. Try a long fixed subtitle and see the ellips.
-
-Add three props to `CustomListItem`: `{id, chatName, enterChat}`.
-
-### 3.2 Add Parts to `HomeScreen`
-
-Add `initialRouteName="Home"` to the `Stack.Navigator` to `App.js`.
-
 In `HomeScreen`, add `useLayoutEffect` to set navigation options `title`, `haderStyle` (styles of the `View` that wraps the header), `headerTitleStyle` (font and text style of the title), `headerTintColor` (the color of the back button and title).
 
 In `headerLeft`, add user avatar, sign out handler. Use `console.log` to debug the iphone simulator (1:41:00). Wrap the avatar inside a `TouchableOpacity`. Sometime you need to reload the simulator. Define a `singOutUser` function that replace the current screen when the user avator is clicked.
 
 In `headerRight`, add a `View` with styles, add two `TouchableOpacity` and icons: `AntDesign` camera icon and `SimpleLineIcons` pencil icon. Add `onPress` to navigate to `AddChat` screen -- add initial `AddChat` screen.
 
-### 3.3 `AddChat` Screen (1:57:00)
+### 3.2 `AddChat` Screen (1:57:00)
 
 This screen creates a new Chat thread.
 
@@ -140,6 +128,14 @@ Add an `Input` and `input` state. add the `leftIcon` property that use a chat ic
 Add a submit button. On click, call `createChat` -- create this funciton to create chat in db collection. Check it in Firestore.
 
 Changes the styles with padding and height. check it in iPhone simulator.
+
+### 3.3 Create `components/CustomListItem.js`
+
+Use `ListItem` and `Avatar` from `react-native-elements`. Set avatar uri to a fixed value for now.
+
+Add `ListItem.Content`, set `<ListItem.Title>` a fixed text. Add `ListItem.SubTitle`, set `numberOfLines` and `ellipsizeMode`, add a fixed test subtitle. Try a long fixed subtitle and see the ellips.
+
+Add three props to `CustomListItem`: `{id, chatName, enterChat}`.
 
 ### 3.4 Show Chats
 
