@@ -7,6 +7,7 @@
 - [React Native Elements](https://reactnativeelements.com/): cross platform react native UI toolkit
 - [Expo vector icons](https://docs.expo.io/guides/icons/)
 - [Expo Using Firebase](https://docs.expo.io/guides/using-firebase/)
+- [JS async await](https://youtu.be/V_Kr9OSfDeU)
 
 ## 2 Register and Login
 
