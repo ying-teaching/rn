@@ -28,11 +28,10 @@ VSCode extensions are dev tools that make you more productive. To install an ext
 Please install the following VSCode extensions:
 
 - [ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint): analyze JS code and fix many problems automatically.
-- [ES7 React/Redux/React-Native/JS snippets](https://marketplace.visualstudio.com/items?itemName=dsznajder.es7-react-js-snippets): JavaScript and React/Redux snippets that save a lot of typing.
+- [EES7+ React/Redux/React-Native snippets](https://marketplace.visualstudio.com/items?itemName=dsznajder.es7-react-js-snippets): JavaScript and React/Redux snippets that save a lot of typing.
 
 Optionally, you may also want to install the following extensions:
 
-- [Bracket Pair Colorizer 2](https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer-2): allows matching brackets to be identified with colours.
 - [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode): Prettier is an opinionated code formatter. It enforces a consistent coding style.
 - [Path Intellisense](https://marketplace.visualstudio.com/items?itemName=christian-kohler.path-intellisense): autocompletes filenames.
 - [vscode-icons](https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons): Bring icons to your project files.

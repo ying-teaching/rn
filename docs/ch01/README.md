@@ -6,7 +6,7 @@ React is "a JavaScript library for building user interfaces". A typical appliati
 
 Essentially, React has two parts: a declarative component lib to build UI and a runtime rendering engine to render the UI. Different rendering runtime generates different UI.
 
-With React Native, the slogan of react became "learn once, write anywhere". It means that you learn the same set of skills of JavaScript and React component mechanism, you can write applications using different component libraries for different UI targets. The `view` could be a web page using [ReactJS](https://reactjs.org/), a desktop application using [React Desktop](http://reactdesktop.js.org/) or a mobile app using [React Native](https://reactnative.dev).
+With React Native, the slogan of react became "learn once, write anywhere". It means that you learn the same set of skills of JavaScript and React component mechanism, you can write applications using different component libraries for different UI targets. The `view` could be a web page using [ReactJS](https://reactjs.org/), a desktop application using [React Desktop](http://reactdesktop.js.org/), a mobile app using [React Native](https://reactnative.dev) or a [React native for Windows + macOS](https://microsoft.github.io/react-native-windows/).
 
 ## 2 React Native
 
@@ -16,9 +16,7 @@ RN reuses React's UI building mechanism and render the UI components to mobile d
 - Simple declarative UI and functional programming paradigm: learn once, write anywhere.
 - Native UI: a set of platform agnostic native components that map to platform-specific UI views.
 
-Though RN encourages you to use different native components for different mobile operating systems (iOS and Android), it is one step closer to "write once, run anywhere" because iOS and Android has many shared React components. To make it fun, you can use render your RN application to Web thus your Web, iOS and Android can share the same code base.
-
-Additionally, you can use RN to develop Windows or MacOS desktop applicatoins. Please check the Microsoft [React Native for Windows + macOS](https://microsoft.github.io/react-native-windows/) website for details.
+Though RN encourages you to use different native components for different mobile operating systems (iOS and Android), it is one step closer to "write once, run anywhere" because iOS and Android has many shared React components. To make it fun, you can use render your RN application to Web and desktop thus your Web, iOS and Android, Windows + macOS can share the same code base.
 
 ## 3 Hello World
 
@@ -51,27 +49,29 @@ If you use `yarn start` instead of `yarn web`, only the dev tool page is shown. 
 
 ## 4 Edit Your App
 
-Open the `hello-world` folder in VS Code, change `<text>` element in the `app.js` as `<Text>Hello World</Text>`. Save the file.
+Open the `hello-world` folder in VS Code, change `<text>` element in the `App.js` as `<Text>Hello World!</Text>`. Save the file.
 
 Your web page changes.
 
-## 5 Push to GitHub
+## 5 Commit, Publish and Push to GitHub
 
-In VS Code, open the `Command Palette`, `Ctrl+Shift+P` in Windows or `Command + Shift + P` in macOS, type `Publish to GitHub` and click the command. VS Code asks you to login and authorize accessing to your GitHub account. Publish it as a public repository thus other people can see it. Your local repository is published to GitHub.
+In VS Code, first commit your changes to the local repository.
 
-For any following changes, you need commit locally first, then push local commits to GitHub.
+Then open the `Command Palette`, `Ctrl+Shift+P` in Windows or `Command + Shift + P` in macOS, type `Publish to GitHub` and click the command. VS Code asks you to login and authorize accessing to your GitHub account. **Publish** it as a **public** (this is important!) repository thus other people can see it. Your local repository is published to GitHub.
+
+For any following changes, you need commit locally first, then **push** local commits to GitHub.
 
 ## 6 Publish to Expo Snacks
 
 To find the URL for you git repository, go to your repository in GitHub, click Code icon and click the disk icon on the right of your HTTPS url to copy the URL. a `copied` message is displayed when you click the disk icon.
 
-Login to your `expo.io` account. Click the Snacks icon on the left panel, click the `+ New Snack` on the topright, It creates a new Snack project.
+Login to your `expo.dev` account. Click the `Snacks` icon on the left panel, click the `+ New Snack` on the topright, It creates a new Snack project.
 
 Click the ellipsis (three vertical dots) in the left project panel, select `Import git repository`. Then copy you GitHub url here.
 
-Save your project, then you can select the tabs on the righ and the lunch icon to see you app up and running.
+Save your project, then you can click the **web** tab on the right to see you app up and running. There seems a bug in Expo.dev, you may need to add `import React from "react"` as the first line in your `App.js` to make it work.
 
-The URL in your Exp stack project the link when you share your project.
+The URL in your Exp stack project is the link to you share your project.
 
 ## 7 For Advanced User Who Want to Run a Simulator
 
