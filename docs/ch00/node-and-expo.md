@@ -20,15 +20,15 @@ Resources:
 
 ## 2 Expo
 
-[Expo](https://docs.expo.io/) is a set of tools and services to help you develop RN apps. The [installation doc](https://docs.expo.dev/get-started/installation/) has the installation instructions of development tools.
+[Expo](https://docs.expo.io/) is a set of tools and services to help you develop and deploy RN apps. Expo is a Node.js package that can be installed by `yarn`.
 
-Expo is a Node.js packaged that can be installed by `yarn`. Run `yarn global add expo-cli` to install it as a global package thus you can run it from any project. A global package is a JS package used by all projects. Wihtout the `global` option, the package is only installed for a local project.
+Run `yarn global add expo-cli` to install it as a global package thus you can run it from any project. A global package is a JS package used by all projects. Wihtout the `global` option, the package is only installed for a local project.
 
 Run `expo --version` to verify the installation.
 
 ## 3 Expo Go App for iOS and Android
 
-You can use the `Expo Go` app to debug your RN apps. Check the [Expo Go document](https://docs.expo.io/get-started/installation/#2-expo-go-app-for-ios-and) to install the app in your phone if you want to debug the app from your smart phone.
+You can use the `Expo Go` app to debug your RN apps. Please install it from [Android Play Store](https://play.google.com/store/apps/details?id=host.exp.exponent) or [iOS App Store](https://apps.apple.com/app/expo-go/id982107779).
 
 ## 4 Create an Expo Account
 
