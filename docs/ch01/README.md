@@ -61,7 +61,19 @@ Then open the `Command Palette`, `Ctrl+Shift+P` in Windows or `Command + Shift +
 
 For any following changes, you need commit locally first, then **push** local commits to GitHub.
 
-## 6 Publish to Expo Snacks
+## 6 Run Your Applications
+
+In development phase, there many ways to share your application: Development Server, Expo Snacks, Expo Publish, iso/Androi simulator, and App/Play Store. The first three are used in the development phases and the last one is for offical release. Because of the constant change of account setup and fees, we don't cover the last one.
+
+### 6.1 Development Server
+
+When you run `expo start` (or `yarn start`), Expo CLI starts an HTTP server and a graphical user interface (GUI) at a default url `http://localhost:19002/`. You can use the GUI to run the app in a Web browser. If you have iOS/Android simulator installed, you can run the app in a simulator.
+
+You can also run the app in Web directly using command `expo start -w` or `yarn web`.
+
+### 6.2 Expo Snacks
+
+[Snack](https://docs.expo.dev/workflow/snack/) is a browser playground that lets you creat a shareable and runnable code quick and easy. You can create a project in your browser or create a project that fetchs code from your github repository. Because it is much easier to write code in VS Code than in a browser, you want to creat a project from a github repository. Another benefit is you have all coding history managed in a github repository.
 
 To find the URL for you git repository, go to your repository in GitHub, click Code icon and click the disk icon on the right of your HTTPS url to copy the URL. a `copied` message is displayed when you click the disk icon.
 
@@ -73,11 +85,15 @@ Save your project, then you can click the **web** tab on the right to see you ap
 
 The URL in your Exp stack project is the link to you share your project.
 
-## 7 For Advanced User Who Want to Run a Simulator
+### 6.3 Expo Publish
 
-If you want to run iOS or Android simulator in your computer, you need to install iOS or Android development toolkits. You need a Mac computer to run the iOS simulator. You can run the Android simulator using a Windows PC or a Mac. You need a powerful machine because a simulator uses a lot of resources. Following are links to installatioin instructions:
+This one is very eays. Once you are ready to share your project, run `expo publish` will publish the project to a cloud storage. The command will give an URL link to the project. Other uses can use the Expo go app to scan the barcode in the project web page and run your app.
 
-- [iOS Simulator](https://docs.expo.io/workflow/ios-simulator/).
-- [Android Simulator](https://docs.expo.io/workflow/android-studio-emulator/).
+### 6.4 For Advanced User Who Want to Run a Simulator (not recommended for beginners)
 
-If you have iOS or Android development tooklit installed, you can run iOS or Android simulation using `yarn ios` or `yarn android`.
+If you want to run iOS or Android simulator in your computer, you need to install iOS or Android development toolkits. It takes a long time to download and install many tools. Additionally, you need a Mac computer to run the iOS simulator. You can run the Android simulator using a Windows PC or a Mac. You need a powerful machine because a simulator uses a lot of resources. Following are links to installatioin instructions:
+
+- [iOS Simulator](https://docs.expo.dev/workflow/ios-simulator/).
+- [Android Simulator](https://docs.expo.dev/workflow/android-studio-emulator/).
+
+If you have iOS or Android development tooklit installed, you can start the iOS/Android simulator first, then run iOS or Android simulation using `yarn ios` or `yarn android`.
