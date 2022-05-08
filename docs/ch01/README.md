@@ -22,7 +22,7 @@ Though RN encourages you to use different native components for different mobile
 
 ### 3.1 Initialize an App
 
-From command line, run `expo init hello-world -t blank`. It initialized a project named `hello-world`. The `-t blank` is an abbreviation for `--template blank`. The command creates a RN project from a blank project template that has a very simple UI using JavaScript. It creates a `hello-world` folder that is the project root.
+From command line, run `expo init hello-world -t blank`. It initializes a project named `hello-world`. The `-t blank` is an abbreviation for `--template blank`. The command creates a RN project from a blank project template that has a very simple UI using JavaScript. It creates a `hello-world` folder that is the project root.
 
 ### 3.2 Run the App
 
@@ -38,7 +38,7 @@ It opens two web pages:
 - a Expo development tool page in `localhost: 19002`
 - a web view of the app in `localhost:19006`
 
-There is a barcode in both the command line and in the dev too page, you can scan the barcode using `Expo Go` app to check the new app in your phone.
+There is a barcode in both the command line and in the dev tool page, you can scan the barcode using `Expo Go` app to check the new app in your phone.
 
 ### 3.3 Other Run Options
 
@@ -96,4 +96,4 @@ If you want to run iOS or Android simulator in your computer, you need to instal
 - [iOS Simulator](https://docs.expo.dev/workflow/ios-simulator/).
 - [Android Simulator](https://docs.expo.dev/workflow/android-studio-emulator/).
 
-If you have iOS or Android development tooklit installed, you can start the iOS/Android simulator first, then run iOS or Android simulation using `yarn ios` or `yarn android`.
+If you have iOS or Android development tooklit installed, you can start the iOS/Android simulator first, then run iOS or Android simulation using `yarn ios` or `yarn android`. After the first time, there is no need to start the simulator before you run the simulation.
