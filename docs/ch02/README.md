@@ -8,7 +8,7 @@ In WWW, when you type an URL or click a web link, the HTTPS protocol will return
 
 [React](https://reactjs.org/) is a JavaScript library for **building user interfaces**. It is a component-based framework that simplifies Web development. A component is a reusable, composable UI construct that consists of low level HTML elements, CSS styles and JavaScript functions.
 
-[React Native](https://reactnative.dev/) combines the best parts of mobile app native development with React for building cross-platform user interfaces. It extends the React web-based UI to run in Web, smart phones (iOS and Android) and desktops.
+[React Native](https://reactnative.dev/) combines the best parts of mobile app native development with React for building cross-platform user interfaces. It extends the React web-based UI to run in Web, smart phones (iOS and Android) and desktops. In the future, the list may include game consoles, TVs and more.
 
 A web page has three parts: data, style and behaior.
 

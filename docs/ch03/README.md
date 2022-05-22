@@ -15,8 +15,8 @@ All dimensions such as `width` and `height` in React Native are unitless, and re
 The common practice is to use `StyleSheet.create` define several styles for subcomponents in one place. You can define inline styles using JS object. The following example uses both styles:
 
 ```jsx
-import React from "react";
-import { Text, View } from "react-native";
+import React from 'react';
+import { Text, View } from 'react-native';
 
 export default function App() {
   return (
@@ -24,7 +24,7 @@ export default function App() {
       <Text
         style={{
           fontSize: 20,
-          color: "teal",
+          color: 'teal',
         }}
       >
         Hello, world!
@@ -36,8 +36,8 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 ```
@@ -61,10 +61,10 @@ You can ues [Flexbox Froggy](https://flexboxfroggy.com/) to play and learn the l
 
 ## RN Flexbox
 
-RN uses the CSS flexbox layout with a few exceptions.
+RN uses a layout engine called [Yaga](https://yogalayout.com/). It is based the CSS flexbox layout with a few exceptions.
 
 - `flexDirection` defaulting to `column` instead of `row`.
 - `alignContent` defaulting to flex-start instead of stretch
 - the `flex` parameter only supporting a single number.
 
-Many RN components are both containers and items thus they use all the above styles.
+Many RN components are both containers and items thus they use all the above styles. The [Yaga Documentation](https://yogalayout.com/docs) describes each properties and gives some examples. We can try with its [Palyground](https://yogalayout.com/playground).
