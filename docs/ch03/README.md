@@ -42,13 +42,9 @@ const styles = StyleSheet.create({
 });
 ```
 
-## Layout with Flexbox
+## RN Flexbox
 
-CSS uses box model for UI style. Flexbox stands for flexible box that is a W3C recommended method to lay out, align and distribute space among items in a container.
-
-You can learn the basics from [a complete guide to flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/). Pay attention to concepts such as `main axis`, `cross axis`, `flex direction`, `align items` and `justify content`. There are properties for the container and properties for the items.
-
-You can ues [Flexbox Froggy](https://flexboxfroggy.com/) to play and learn the layout. Follwoing are commonly used styles:
+RN layout is based on Flexbox. The [Layout with Flexbox](https://reactnative.dev/docs/flexbox) is a must-read. Follwoing are commonly used styles:
 
 - Container Styles
   - `flexDirection`: this defines the `main axis`, can be either `column` or `row`. In RN, default is `column`. Items are placed from top to bottome.
@@ -59,12 +55,18 @@ You can ues [Flexbox Froggy](https://flexboxfroggy.com/) to play and learn the l
   - `flex`: a single value defines the relative size of the item.
   - `align-self`: this overrides container's `align-items`value for this item.
 
-## RN Flexbox
-
-RN uses a layout engine called [Yaga](https://yogalayout.com/). It is based the CSS flexbox layout with a few exceptions.
+The RN layout engine is called [Yaga](https://yogalayout.com/). It is based the CSS flexbox layout with a few exceptions.
 
 - `flexDirection` defaulting to `column` instead of `row`.
 - `alignContent` defaulting to flex-start instead of stretch
 - the `flex` parameter only supporting a single number.
 
 Many RN components are both containers and items thus they use all the above styles. The [Yaga Documentation](https://yogalayout.com/docs) describes each properties and gives some examples. We can try with its [Palyground](https://yogalayout.com/playground).
+
+## W3C Flexbox Resources
+
+CSS uses box model for UI style. Flexbox stands for flexible box that is a W3C recommended method to lay out, align and distribute space among items in a container.
+
+You can learn the basics from [a complete guide to flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/). Pay attention to concepts such as `main axis`, `cross axis`, `flex direction`, `align items` and `justify content`. There are properties for the container and properties for the items.
+
+You can ues [Flexbox Froggy](https://flexboxfroggy.com/) to play and learn the layout.
