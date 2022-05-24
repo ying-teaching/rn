@@ -20,6 +20,13 @@ A web page has three parts: data, style and behaior.
 
 React and React Native use JavaScript or TypeScript (JS with Type) as its programming language. It uses the CSS to style UI components. JSX is a special syntax to mix JavaScript, UI components and styles together.
 
+Following are some new JavaScript features commonly used in modern apps.
+
+- [Arrow functions](https://www.reactnative.express/javascript/features/arrow_functions)
+- [Destructuing](https://www.reactnative.express/javascript/features/destructuring)
+- [Spread](https://www.reactnative.express/javascript/features/spread)
+- [Async and Await](https://www.reactnative.express/javascript/features/async_and_await)
+
 ## 1.2 JSX
 
 [An introduction to JSX](jsx.md).
@@ -35,15 +42,7 @@ React and React Native use JavaScript or TypeScript (JS with Type) as its progra
 
 ### 2.2 Javascript
 
-[MDN JS tutorial](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript).
-
-A quick review of new JavaScript features, check the [Modern JavaScript](https://turriate.com/articles/modern-javascript-everything-you-missed-over-10-years). The commonly used features include:
-
-- [Arrow functions](https://turriate.com/articles/modern-javascript-everything-you-missed-over-10-years#arrows)
-- [Nullish coalescing](https://turriate.com/articles/modern-javascript-everything-you-missed-over-10-years#optional-chaining)
-- [Spread Operator](https://turriate.com/articles/modern-javascript-everything-you-missed-over-10-years#spread)
-- [Desctructuring](https://turriate.com/articles/modern-javascript-everything-you-missed-over-10-years#destructuring)
-- [Module import/export](https://turriate.com/articles/modern-javascript-everything-you-missed-over-10-years#modules)
+For a quick tutorial, please check [MDN JS tutorial](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript).
 
 For basic JavaScript programming, please check the [The JavaScript Way](https://github.com/thejsway/thejsway) Part 1.
 
