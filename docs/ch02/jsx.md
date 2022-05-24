@@ -6,10 +6,6 @@ JSX stands for **JavaScript XML**. It is a JavaScript syntax extension used to d
 
 Using JSX, you can write XML markup inside Javascript, providing you with a superpower to write logic and markup of a component inside a single JSX file.
 
-## Compile JSX
-
-Because RN uses `React` to compile JSX, you need to import it first as: `import React from 'react'` in your JSX file even you don't use it directly in your code. This is not required after React 17.0 but many documents don't mention this.
-
 ## Views and Components
 
 From [React Native Document](https://reactnative.dev/docs/intro-react-native-components):
@@ -22,9 +18,19 @@ React Native uses components that are backed by the corresponding Android and iO
 
 A component is also called a React Element. It is an individual resualble piece of UI. Components are composable that means a component can have one or more elements.
 
-## Component Markup
+## JSX Expression
 
-React components are created by using their tags, either with or without closing tag. For example: `<Text>content</Text>` or `<Button title="Click" />`. It uses the same HTML syntax with different tag name. The RN built-in and custom components use capitalized names.
+A JSX expressino is used to create React components. React components are created by using their tags, either with or without closing tag. For example: `<Text>content</Text>` or `<Button title="Click" />` are valid JSX expressions. It uses the same HTML syntax with different tag name. The RN built-in and custom components use capitalized names.
+
+The JSX expression can only return a single component or an array of components. The JSX expression is a regular JavaScript value that can be assigned to a variable or returned from a function call. For example:
+
+```js
+const content = <Text>content</Text>;
+
+const Pets = () => {
+  return [<Dog />, <Cat />];
+};
+```
 
 Use component property names to initialize its props. A single prop without assingment has a default value of `true`. For example: `<MyTextBox autocomplete />` is the same as `<MyTextBox autocomplete={true} />`.
 
@@ -35,6 +41,17 @@ A component can have children elements.
   <Text>Hello World</Text>
   <StatusBar style="auto" />
 </View>
+```
+
+If you assign or return a JSX component that has nested components, use a parenthse to wrap the expression. For example:
+
+```js
+const hello = (
+  <View style={styles.container}>
+    <Text>Hello World</Text>
+    <StatusBar style="auto" />
+  </View>
+);
 ```
 
 ## Embedding Expressions in JSX
@@ -53,6 +70,10 @@ const user = {
 
 const element = <Text>Hello, {formatName(user)}!</Text>;
 ```
+
+## Compile JSX
+
+Because RN uses `React` to compile JSX, you need to import it first as: `import React from 'react'` in your JSX file even you don't use it directly in your code. This is not required after React 17.0 but many documents don't mention this.
 
 ## Resource
 
