@@ -22,7 +22,7 @@ Though RN encourages you to use different native components for different mobile
 
 ### 3.1 Initialize an App
 
-From command line, run `expo init hello-world -t blank`. It initializes a project named `hello-world`. The `-t blank` is an abbreviation for `--template blank`. The command creates a RN project from a blank project template that has a very simple UI using JavaScript. It creates a `hello-world` folder that is the project root.
+From the command line, run `expo init hello-world -t blank`. It initializes a project named `hello-world`. The `-t blank` is an abbreviation for `--template blank`. The command creates a RN project from a blank project template that has a very simple UI using JavaScript. It creates a `hello-world` folder that is the project root.
 
 ### 3.2 Run the App
 
@@ -42,10 +42,10 @@ There is a barcode in both the command line and in the dev tool page, you can sc
 
 ### 3.3 Other Run Options
 
-If you use `yarn start` instead of `yarn web`, only the dev tool page is shown. You can run the Web view uisng one of two methods:
+If you use `yarn start` instead of `yarn web`, it starts an HTTP server at a default url `http://localhost:19002/`. You can use the web page to run the app in a Web browser. You can run the Web view uisng one of two methods:
 
-- In the command line, press `w` to open a web view.
-- In the dev page, click `Run in web browser`. to see the web version of your app.
+- In the command line (the terminal you run `yarn start`), press `w` to open a web view.
+- In the web page, click `Run in web browser`. to see the web version of your app.
 
 ## 4 Edit Your App
 
@@ -85,9 +85,9 @@ Save your project, then you can click the **web** tab on the right to see you ap
 
 The URL in your Exp stack project is the link to you share your project.
 
-### 6.3 Expo Publish
+### 6.3 Expo Publish (optional)
 
-This one is very eays. Once you are ready to share your project, run `expo publish` will publish the project to a cloud storage. The command will give an URL link to the project. Other uses can use the Expo go app to scan the barcode in the project web page and run your app.
+This one is very easy. Once you are ready to share your project, run `expo publish` will publish the project to a cloud storage. The command will give an URL link to the project. Other uses can use the Expo go app to scan the barcode in the project web page and run your app.
 
 ### 6.4 For Advanced User Who Want to Run a Simulator (not recommended for beginners)
 
