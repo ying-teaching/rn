@@ -1,4 +1,4 @@
-# Components and State Hooks
+# Components and Hooks
 
 ## 1 Components
 
@@ -114,7 +114,7 @@ export default function App() {
 
 ## 2 Component Props
 
-### 2.1 Core Component Props
+### 2.1 Component Props
 
 You use props to customize RN components. Props is short for “properties" that are passed as function arguments to a component. In JSX syntax, prop values are passed as attribute values. Most RN built-in components can be customized by different props.
 
@@ -137,7 +137,34 @@ export default function App() {
 }
 ```
 
-### 2.2 Custom Component
+There are two important rules for props of a component:
+
+- Props are read only. They are used to initialize the component. Don't change any property value.
+- A components must act like a pure function with respect to its props.
+
+A `pure` function means for the same input of `props`, it always returns the same output. A pure function doesn't return different values for the same input. For exmaple, `Math.sqrt(x)` is a pure function while `Math.random()` is not a pure funciton.
+
+### 2.2 Core Component Caegories
+
+RN provides a set of commonly used [Core Components](https://reactnative.dev/docs/components-and-apis). The core components can be classified into the following categories:
+
+- Basic Components: `<View>`, `<Text>`, `<Image>`, `<TextInput>`, `<ScrollView>` and `<StyleSheet>`.
+- User Interface: `<Button>` and `<Switch>`.
+- List Views: `<FlatList>`, `<SectoinList>`.
+- Android-specific Components.
+- iOS Components.
+- Others: such as `<Alert>`, `<Modal>`, `StatusBar` etc.
+
+### 2.3 Core Component Examples
+
+- [`<View>`](https://reactnative.dev/docs/view): A container that supports layout with flexbox, style, some touch handling, and accessibility controls. View maps directly to the native view equivalent on whatever platform React Native is running on, whether that is a UIView (iOS), `<div>` (Web), android.view (Android), etc.
+- [`<Text>`](https://reactnative.dev/docs/text): a component for display text. It supports nesting, sytling and touch handling.
+- [Handling Text Input](https://reactnative.dev/docs/handling-text-input).
+- [`<Button>`](https://reactnative.dev/docs/button): A simple clickable button. If you want a cusotmized button, check [Custom Button](https://docs.expo.io/tutorial/button/) to create a custom button using `<TouchableOpacity>`.
+
+In handling text input and button, you define event handlers to handle UI events. It is a common pattern for most UI applications.
+
+### 2.4 Custom Component
 
 To define a customizable functional component (hereafter simply component), you define a function with a `props` parameter.
 
@@ -172,15 +199,6 @@ The above code defines three components: `Hello`, `Hello2` and `Hello3` that can
 
 In the above code, the two components `Hello` and `Hello2` are defined by two functions. Each function has a `props` parameter. It is an object whose properties are provided by a component that use it. In `Hello3` component, the function argument `({ name })` retrieves the `name` property from the `<Hello3 name="Cindy" />` component. Therefoe the `name` can be used in the component function body directly without the `props` prefix.
 
-### 2.3 Props and Pure Functions
-
-There are two important rules for a component:
-
-- Props are read only. They are used to initialize the component. Don't change any property value.
-- A components must act like a pure function with respect to its props.
-
-A `pure` function means for the same input of `props`, it always returns the same output. A pure function doesn't return different values for the same input. For exmaple, `Math.sqrt(x)` is a pure function while `Math.random()` is not a pure funciton.
-
 ## 3 Hook Concept
 
 ### 3.1 Props and States
@@ -209,18 +227,26 @@ If you want to get a deep understanding, read [Everything you need to know about
 
 ### 3.2 State and Effect
 
-Essentially, hooks are functions that let you "hook into" functional components to provide state and lifecycle features. Two types of commonly used built-in hooks are:
+Essentially, hooks are functions that let you "hook into" functional components to provide state and lifecycle features. In a simplified view, a component lifecycle has three stages: `mounting`, `updating` and `unmounting`.
 
-- State hook: a state hook adds a local state to a component. You can have multiple state hook for multiple local states.
-- Effect hook: an effect hook is used for a "side effect" operation. Data fetching, data subscription and UI manipulation operations are "side effects" because they are not belong to component rendering but need to be performed when a component is mounted, updated or dismounted.
+- `mounting`: when the component is mounted to the element tree and is rendered.
+- `updating`: when props/states change, the component is re-rendered with new changes.
+- `unmounting`: when the component is removed from the screen.
+
+Two types of commonly used built-in hooks are:
+
+- State hook: a state hook adds a local state to a component. You can have multiple state hook for multiple local states. Any state change triggers the component to `updating` stage.
+- Effect hook: an effect hook is used to define operations triggered by component lifecyle stage changes. It is for a "side effect" operation. Data fetching, data subscription and UI manipulation operations are "side effects" because they are not belong to component rendering but need to be performed when a component is in `mounting` or `updating` stages. It may need to clear resources when the component is in `unmounting` stage.
 
 In addition to the built-in hooks, you can create custom hooks that manage stateful logic and resue them in different components. Due to the functional nature of the hooks, hooks are reused for their logic, not their states. The state of each component is independent.
 
-## 4 States
+## 4 State Hooks
 
-There are two common types of data that control a component: `props` and `state`. `props` are set by the parent and they are fixed throughout the lifetime of a component. For data that is going to change, you have to use `state`.
+There are two common types of data that control a component: `props` and `states`. `props` are set by the parent and they are fixed throughout the lifetime of a component. For data that is going to change, you have to use `states`.
 
 You should initialize state at the top of a function component, and then call `setState` when you want to change it. A hook is a special function that lets you “hook into” a component. The `useState` function is a hook that lets you add state to components.
+
+### 4.1 A Counter Example
 
 ```js
 import React, { useState } from 'react';
@@ -275,29 +301,7 @@ const [todos, setTodos] = useState([{ text: 'Learn Hooks' }]);
 
 The [RN State Guide](https://reactnative.dev/docs/intro-react#state) has more information and an example of a stateful component.
 
-## 5 Core Components
-
-### 5.1 Core Component Caegories
-
-RN provides a set of commonly used [Core Components](https://reactnative.dev/docs/components-and-apis). The core components can be classified into the following categories:
-
-- Basic Components: `<View>`, `<Text>`, `<Image>`, `<TextInput>`, `<ScrollView>` and `<StyleSheet>`.
-- User Interface: `<Button>` and `<Switch>`.
-- List Views: `<FlatList>`, `<SectoinList>`.
-- Android-specific Components.
-- iOS Components.
-- Others: such as `<Alert>`, `<Modal>`, `StatusBar` etc.
-
-### 5.2 Core Component Examples
-
-- [`<View>`](https://reactnative.dev/docs/view): A container that supports layout with flexbox, style, some touch handling, and accessibility controls. View maps directly to the native view equivalent on whatever platform React Native is running on, whether that is a UIView (iOS), `<div>` (Web), android.view (Android), etc.
-- [`<Text>`](https://reactnative.dev/docs/text): a component for display text. It supports nesting, sytling and touch handling.
-- [Handling Text Input](https://reactnative.dev/docs/handling-text-input).
-- [`<Button>`](https://reactnative.dev/docs/button): A simple clickable button. If you want a cusotmized button, check [Custom Button](https://docs.expo.io/tutorial/button/) to create a custom button using `<TouchableOpacity>`.
-
-In handling text input and button, you define event handlers to handle UI events. It is a common pattern for most UI applications.
-
-## 6 An Input Example
+### 4.2 An Input Example
 
 The following is an example that takes a user input number and print the squared resulte.
 
@@ -340,11 +344,184 @@ const styles = StyleSheet.create({
 });
 ```
 
-## 7 Resources
+## 5 Effect Hook
+
+### 5.1 Introduction
+
+When you
+
+- fetch data from a web site
+- read from local storage
+- write to a file or a database
+- set a timer function
+- subscribe to an external source to get notification of changes
+
+you are performing a so-called `side effect`. Usually these tasks should be performed asynchronously to not freeze UI.
+
+You should know the following facts about effect hook:
+
+- `useEffect` is executed asynchronously after the first render and after every update (re-render). It doesn't block the UI rendereing.
+- Use `useEffect` for asynchronous tasks.
+- Effects run after every render cycle. You have options to opt out from this behavior by defining a array of dependencies.
+- An effect is rerun if at least one of its values changes since the last render cycle.
+
+### 5.2 Declare Dependency
+
+In a simple case, you call `useEffect` with a side-effect function as its only rgument like the following:
+
+```js
+useEffect(() => {
+  console.log('Effect ran');
+});
+```
+
+The side-effect function is a mandatory argument. With only one argument, the side-effect funciton is executed after **every** rendering operation. Usually that is not what you want -- you should add second argument: an array of dependents (props or states) that cause the side-effect execution.
+
+```jsx
+// this code runs only at the initial render
+useEffect(() => {
+  console.log('Effect ran');
+}, []);
+
+// runs whenever the state changes
+useEffect(() => {
+  console.log('Effect ran');
+}, [state]);
+```
+
+### 5.3 Cancel Operation
+
+The side-effect function can return another function that is executed when the component is destroyed. The returned function is often used to cancel incompleted function calls or release resources. For example, you start an expensive database search operation but change your mind and quickly navigate away from the current screen. In this case, it is a good idea to cancel the search when the search screen is not longer needed. A screen subscribe to a notification should cancel the subscription when the screen is destroyed.
+
+### 5.4 An Example
+
+The following code fetch data from a remote server by calling its REST API.
+
+```jsx
+import React, { useState, useEffect } from 'react';
+import {
+  ActivityIndicator,
+  FlatList,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
+
+export default function App() {
+  const [data, setData] = useState([]);
+  const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(
+    () => {
+      const abortController = new AbortController();
+      const signal = abortController.signal;
+
+      console.log(`loading page: ${page}`);
+      setLoading(true);
+      const apiURL = `http://jsonplaceholder.typicode.com/todos?_limit=10&_page=${page}`;
+
+      fetch(apiURL, { method: 'get', signal })
+        .then((res) => res.json())
+        .then((resJson) => {
+          setData(data.concat(resJson));
+          setLoading(false);
+        })
+        .catch((error) => console.log(error.message));
+
+      // cancel function, called the the previous component is destroyed
+      return () => {
+        console.log(`Aborting fetch ${page}`);
+        abortController.abort();
+      };
+    },
+
+    // dependency
+    [page]
+  );
+
+  function renderItem({ item, index }) {
+    return (
+      <View style={styles.item}>
+        <Text style={styles.itemText}>{`${index} ${item.title}`}</Text>
+      </View>
+    );
+  }
+
+  function renderFooter() {
+    return (
+      { loading } && (
+        <View style={styles.loader}>
+          <ActivityIndicator size="large" />
+        </View>
+      )
+    );
+  }
+
+  function handleLoadMore() {
+    setPage(page + 1);
+  }
+
+  return (
+    <SafeAreaView style={styles.container}>
+      <FlatList
+        style={styles.list}
+        data={data}
+        renderItem={renderItem}
+        ListFooterComponent={renderFooter()}
+        keyExtractor={(_, index) => index.toString()}
+        // Called when all rows have been rendered and the list has been scrolled to within onEndReachedThreshold of the bottom.
+        onEndReached={handleLoadMore}
+        // Threshold in pixels (virtual, not physical) for calling onEndReached.
+        onEndReachedThreshold={0}
+      />
+    </SafeAreaView>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  list: {
+    marginTop: 20,
+    backgroundColor: '#f5fcff',
+  },
+  item: {
+    borderBottomColor: '#ccc',
+    marginBottom: 10,
+    borderBottomWidth: 1,
+  },
+  itemText: {
+    fontSize: 16,
+    padding: 5,
+  },
+  loader: {
+    marginTop: 10,
+    alignItems: 'center',
+  },
+});
+```
+
+## 6 Resources
+
+### 6.1 Components
 
 - [Intro to Component](https://reactnative.dev/docs/intro-react)
 - [Native Components](https://reactnative.dev/docs/intro-react-native-components)
+- [Core Components](https://reactnative.dev/docs/components-and-apis)
 - [Core Component APIs](https://reactnative.dev/docs/components-and-apis)
+
+### 6.2 Hooks
+
 - [Intro to Hooks](https://reactjs.org/docs/hooks-intro.html)
 - [RN State Guide](https://reactnative.dev/docs/intro-react#state)
-- [Core Components](https://reactnative.dev/docs/components-and-apis)
+- [Hooks API Reference](https://reactjs.org/docs/hooks-reference.html)
+
+The Youtube video [Getting Closure on React Hooks](https://youtu.be/KJP1E-Y-xyo) shows how to build a tiny Hook clone in simple JavaScript code. It helps to understanding the rules and theories of Hooks.
+
+To gain a deep understanding, the article [The last guide to the `useEffect` Hook you’ll ever need](https://blog.logrocket.com/guide-to-react-useeffect-hook/) is a good introdcution to the key concepts of using effects.

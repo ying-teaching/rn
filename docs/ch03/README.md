@@ -1,4 +1,4 @@
-# Components Style and Layout
+# Style and Layout
 
 ## 1 View, Components and Elements
 

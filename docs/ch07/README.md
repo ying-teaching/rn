@@ -1,134 +1,128 @@
-# Effect Hook
+# GraphQL and Apollo Client
 
-Resources
+Apollo Client, abbreviated as AC, is a library that is integrated with React to manage local and remote data with GraphQL. It proivdes fetch, cache and mutation functions in a declarative way. This note is based on [Apollo Docs](https://www.apollographql.com/docs/react/).
 
-- [REST API](https://youtu.be/SLwpqD8n3d0)
-- [REST vs GraphQL](https://youtu.be/PeAOEAmR0D0)
+AC react has the following features:
 
-## Introduction
+- Declarative: the logic for retrieving your data, tracking loading and error states, and updating your UI is encapsulated by the `useQuery` Hook. AC takes care of the request cycle of loading/error/completion. You just use the available data.
+- Cache: cache the data and provide quick response.
+- A unified interface: for both local and remote data managemnet.
+- Subscription: AC can create active connection to your GraphQL server (most commonly via WebSocket), enabling the server to push updates to the subscription's result.
 
-When you
+Componies such as The New York Times, Major League Soccer and Expo use Apollo Client in production.
 
-- fetch data from a web site
-- read from local storage
-- write to a file or a database
-- set a timer function
-- subscribe to an external source to get notification of changes
+Resources:
 
-you are performing a so-called `side effect`. Usually these tasks should be performed asynchronously to not freeze UI.
+- [Getting Started with GraphQL](https://youtu.be/ARgQ4oK0Mz8): introduce GraphQL how to make GraphQL requests against Shopify store.
+- [GraphQL With React Tutorial](https://youtu.be/YyUWW04HwKY): use Apollo client in React to query data.
 
-In a simple case, you call `useEffect` with a side-effect function as its argument like the following:
+## Get Started
+
+### 1 Install Dependencies
+
+`npm install @apollo/client graphql` or `yarn add @apollo/client graphql`
+
+### 2 Create a Client
+
+You need to specify a GraphQL server URL and create a cache.
 
 ```js
-useEffect(() => {
-  console.log("Effect ran");
+import { ApolloClient, InMemoryCache } from "@apollo/client";
+
+const client = new ApolloClient({
+  uri: "https://48p1r2roz4.sse.codesandbox.io",
+  cache: new InMemoryCache(),
 });
 ```
 
-## Declare Dependency
+### 3 Connect Client to React
 
-The side-effect function is a mandatory argument. Without optional second argument, the side-effect funciton is executed everytime after render. If that is not what you want, you should add second argument: an array of dependents (props or states) that should cause the side-effect execution.
+Wrap RN app with an `<ApolloProvider client={client}>`. It places the client on the context of wrapped components.
 
-```jsx
-// this code runs only at the initial render
-useEffect(() => {
-  console.log("Effect ran");
-}, []);
+### 4 Request Data
 
-// runs whenever the state changes
-useEffect(() => {
-  console.log("Effect ran");
-}, [state]);
+Define query and use the query.
+
+```js
+const EXCHANGE_RATES = gql`
+  query GetExchangeRates {
+    rates(currency: "USD") {
+      currency
+      rate
+    }
+  }
+`;
+
+const { loading, error, data } = useQuery(EXCHANGE_RATES);
 ```
 
-## Cancel Operation
-
-The side-effect function can return another function that is executed when the component is destroyed. The returned function is often used to cancel incompleted function calls or release resources. For example, you start an expensive database search operation but change your mind and quickly navigate away from the current screen. In this case, it is a good idea to cancel the search when the search screen is not longer needed. A screen subscribe to a notification should cancel the subscription when the screen is destroyed.
-
-## An Example
-
-The following code fetch data from a remote server by calling its REST API.
+The `app.js` has the complete code:
 
 ```jsx
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { StyleSheet, Text, View, SafeAreaView, FlatList } from "react-native";
+
 import {
-  ActivityIndicator,
-  FlatList,
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  View,
-} from "react-native";
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  useQuery,
+  gql,
+} from "@apollo/client";
 
-export default function App() {
-  const [data, setData] = useState([]);
-  const [page, setPage] = useState(1);
-  const [loading, setLoading] = useState(false);
+const client = new ApolloClient({
+  uri: "https://48p1r2roz4.sse.codesandbox.io",
+  cache: new InMemoryCache(),
+});
 
-  useEffect(
-    () => {
-      const abortController = new AbortController();
-      const signal = abortController.signal;
+const EXCHANGE_RATES = gql`
+  query GetExchangeRates {
+    rates(currency: "USD") {
+      currency
+      rate
+    }
+  }
+`;
 
-      console.log(`loading page: ${page}`);
-      setLoading(true);
-      const apiURL = `http://jsonplaceholder.typicode.com/todos?_limit=10&_page=${page}`;
+const renderItem = ({ item }) => (
+  <View>
+    <Text>
+      {item.currency} : {item.rate}
+    </Text>
+  </View>
+);
 
-      fetch(apiURL, { method: "get", signal })
-        .then((res) => res.json())
-        .then((resJson) => {
-          setData(data.concat(resJson));
-          setLoading(false);
-        })
-        .catch((error) => console.log(error.message));
-
-      // cancel function, called the the previous component is destroyed
-      return () => {
-        console.log(`Aborting fetch ${page}`);
-        abortController.abort();
-      };
-    },
-
-    // dependency
-    [page]
-  );
-
-  function renderItem({ item, index }) {
+function ExchangeRates() {
+  const { loading, error, data } = useQuery(EXCHANGE_RATES);
+  if (loading)
     return (
-      <View style={styles.item}>
-        <Text style={styles.itemText}>{`${index} ${item.title}`}</Text>
+      <View>
+        <Text>Loading...</Text>
       </View>
     );
-  }
-
-  function renderFooter() {
+  if (error)
     return (
-      { loading } && (
-        <View style={styles.loader}>
-          <ActivityIndicator size="large" />
-        </View>
-      )
+      <View>
+        <Text>Fetch Error: {error.message}</Text>
+      </View>
     );
-  }
-
-  function handleLoadMore() {
-    setPage(page + 1);
-  }
 
   return (
     <SafeAreaView style={styles.container}>
       <FlatList
-        style={styles.list}
-        data={data}
+        data={data.rates}
         renderItem={renderItem}
-        ListFooterComponent={renderFooter()}
-        keyExtractor={(_, index) => index.toString()}
-        // Called when all rows have been rendered and the list has been scrolled to within onEndReachedThreshold of the bottom.
-        onEndReached={handleLoadMore}
-        // Threshold in pixels (virtual, not physical) for calling onEndReached.
-        onEndReachedThreshold={0}
+        keyExtractor={(item) => item.currency}
       />
     </SafeAreaView>
+  );
+}
+
+export default function App() {
+  return (
+    <ApolloProvider client={client}>
+      <ExchangeRates />
+    </ApolloProvider>
   );
 }
 
@@ -139,36 +133,35 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  list: {
-    marginTop: 20,
-    backgroundColor: "#f5fcff",
-  },
-  item: {
-    borderBottomColor: "#ccc",
-    marginBottom: 10,
-    borderBottomWidth: 1,
-  },
-  itemText: {
-    fontSize: 16,
-    padding: 5,
-  },
-  loader: {
-    marginTop: 10,
-    alignItems: "center",
-  },
 });
 ```
 
-## To Learn More
+## Mutations
 
-The [Hooks API Reference](https://reactjs.org/docs/hooks-reference.html) has detail information for each Hook.
+The [`useMutation`](https://www.apollographql.com/docs/react/data/mutations/) hook returns a tuple with a mutate function in its first position and a result on its second position. The mutate funciton is used to execute the mutation. The result is an object that has properties of `data`, `loading`, `error` etc, corresponding to the fiedls of a query result.
 
-The Youtube video [Getting Closure on React Hooks](https://youtu.be/KJP1E-Y-xyo) shows how to build a tiny Hook clone in simple JavaScript code. It helps to understanding the rules and theories of Hooks.
+After mutation execution, AC can automatically update a single entity if the mutation modifies a single entity and returns the `id` of the modified entity. For example:
 
-To gain a deep understanding, the article [The last guide to the `useEffect` Hook you’ll ever need](https://blog.logrocket.com/guide-to-react-useeffect-hook/) is a good introdcution to the key concepts of using effects. The key points are:
+```js
+const UPDATE_TODO = gql`
+  mutation UpdateTodo($id: String!, $type: String!) {
+    updateTodo(id: $id, type: $type) {
+      id
+      type
+    }
+  }
+`;
 
-- `useEffect` is executed asynchronously after the first render and after every update (re-render). It doesn't block the UI rendereing.
-- Use `useEffect` for asynchronous tasks.
-- Effects run after every render cycle. You have options to opt out from this behavior by defining a array of dependencies.
-- An effect is rerun if at least one of its values changes since the last render cycle.
-- The functions defined in the body of your function component get recreated on every render cycle. It may cause [stale closures](https://dmitripavlutin.com/react-hooks-stale-closures/).
+// excute mutation
+const [updateTodo] = useMutation(UPDATE_TODO);
+updateTodo({ variables: { id, type: value } });
+```
+
+AC doesn't update cache automatically if the mutation modifies multiple entities or deletes entitities. You need to use an update function in a call to `useMutation`.
+
+## Local State
+
+AC is acutally a state management library that use GraphQL to talk with a remote GraphQL server. The local data can be in `localStorage` or in AC Cache. There are two ways to manage local state:
+
+- [Reactive variables](https://www.apollographql.com/docs/react/local-state/reactive-variables/): local state stored outside of the AC cache.
+- [local-only fields](https://www.apollographql.com/docs/react/local-state/managing-state-with-field-policies/#storing-local-state-in-reactive-variables): fields that are calculated locally. A single query can include both local-only fields and fields fetched from a remote server. A field policy specifies how to fetch data and write the result to AC cache.

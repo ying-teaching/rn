@@ -1,4 +1,4 @@
-# JavaScript, CSS and JSX
+# Web Page and JSX
 
 In this section, we introduct the relationship among Web page, React and React Native. Then we give a quick introduction to each underlying technogogy: JavaScript, HTML, CSS, and JSX.
 
