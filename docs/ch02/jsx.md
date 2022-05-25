@@ -2,7 +2,7 @@
 
 ## Rational
 
-JSX stands for **JavaScript XML**. It is a JavaScript syntax extension used to describe UI components. In Reeact Native, UI is inherently coupled with UI logic such as event handling and state management. Therefore JSX consists of declarative UI description and JavaScript code. JSX is a syntac sugar for JavaScript code. It makes UI description much simpler than pure JavaScript code. Using JSX, you can write XML markup inside Javascript, providing you with a superpower to write logic and markup of a component inside a single JSX file.
+JSX stands for **JavaScript XML**. It is a JavaScript syntax extension used to describe UI **elements**. In Reeact Native, UI is inherently coupled with UI logic such as event handling and state management. Therefore JSX consists of declarative UI description and JavaScript code. JSX is a syntac sugar for JavaScript code. It makes UI description much simpler than pure JavaScript code. Using JSX, you can write XML markup inside Javascript, providing you with a superpower to write logic and markup of an element inside a single JSX file.
 
 The JSX code, copied from [JSX in Depth](https://reactjs.org/docs/jsx-in-depth.html):
 
@@ -20,21 +20,9 @@ React.createElement(MyButton, { color: 'blue', shadowSize: 2 }, 'Click Me');
 
 The JSX code is simpler and more intuitive than the pure JavaScript code.
 
-## Views and Components
-
-From [React Native Document](https://reactnative.dev/docs/intro-react-native-components):
-
-> In Android and iOS development, a view is the basic building block of UI: a small rectangular element on the screen which can be used to display text, images, or respond to user input. Even the smallest visual elements of an app, like a line of text or a button, are kinds of views. Some kinds of views can contain other views. It’s views all the way down!
-
-![UI View](images/UIView.png)
-
-React Native uses components that are backed by the corresponding Android and iOS views. These platform-backed components are called `Native Components`. RN provides a set of commonly used Native comonents. These are RN's [Core Components](https://reactnative.dev/docs/components-and-apis).
-
-A component is also called a React Element. It is an individual resualble piece of UI. Components are composable that means a component can have one or more elements.
-
 ## JSX Expression
 
-A JSX expressino is used to create React components. React components are created by using their tags, either with or without closing tag. For example: `<Text>content</Text>` or `<Button title="Click" />` are valid JSX expressions. It uses the same HTML syntax with different tag name. The RN built-in and custom components use capitalized names.
+A JSX expressino is used to create React elements. React elements are created by using their tags, either with or without closing tag. For example: `<Text>content</Text>` or `<Button title="Click" />` are valid JSX expressions. The tag specifies a **component** to be rendered -- it is the `type` of the element. A JSX expression uses the same HTML syntax with different tag names. The RN built-in and custom components use capitalized names.
 
 The JSX expression can only return a single component or an array of components. The JSX expression is a regular JavaScript value that can be assigned to a variable or returned from a function call. For example:
 
@@ -48,7 +36,7 @@ const Pets = () => {
 
 Use component property names to initialize its props. A single prop without assingment has a default value of `true`. For example: `<MyTextBox autocomplete />` is the same as `<MyTextBox autocomplete={true} />`.
 
-A component can have children elements.
+An element can have children elements.
 
 ```jsx
 <View style={styles.container}>

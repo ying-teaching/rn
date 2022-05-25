@@ -2,6 +2,18 @@
 
 ## 1 Component
 
+### 1.1 Views and Components
+
+From [React Native Document](https://reactnative.dev/docs/intro-react-native-components):
+
+> In Android and iOS development, a view is the basic building block of UI: a small rectangular element on the screen which can be used to display text, images, or respond to user input. Even the smallest visual elements of an app, like a line of text or a button, are kinds of views. Some kinds of views can contain other views. It’s views all the way down!
+
+![UI View](images/UIView.png)
+
+React Native uses components that are backed by the corresponding Android and iOS views. These platform-backed components are called `Native Components`. RN provides a set of commonly used Native comonents. These are RN's [Core Components](https://reactnative.dev/docs/components-and-apis). Components are composable -- it means that a component can have one or more sub components. It is an individual resualble piece of a React App.
+
+A component rendered in a screen is called a React **Element**. Elements in a screen are organized as a tree. Formally, the component is the `type` of rendered element.
+
 ## 2 Style
 
 All RN core components accept a `style` property. The value is an object whose property names are CSS style names and values are CSS values. Because JavaScript doesn't allow `-` in a property name, you should use camel casing names. For example, use `backgroundColor` instead of `background-color`, use `fontSize` instead of `font-size`.
