@@ -30,7 +30,6 @@ Following are some new JavaScript features commonly used in modern apps.
 ## 1.2 JSX
 
 [An introduction to JSX](jsx.md).
-[React Native Introduction](https://reactnative.dev/docs/getting-started)
 
 ## 2 Web Learning Resources
 

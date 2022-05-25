@@ -1,12 +1,8 @@
-# Style and Layout
+# Component, Style and Layout
 
-Resources:
+## 1 Component
 
-- [RN style document](https://reactnative.dev/docs/style)
-- [a complete guide to flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/): The first three subjects.
-- [RN Layout with Flexbox](https://reactnative.dev/docs/flexbox)
-
-## Component Style
+## 2 Style
 
 All RN core components accept a `style` property. The value is an object whose property names are CSS style names and values are CSS values. Because JavaScript doesn't allow `-` in a property name, you should use camel casing names. For example, use `backgroundColor` instead of `background-color`, use `fontSize` instead of `font-size`.
 
@@ -42,7 +38,9 @@ const styles = StyleSheet.create({
 });
 ```
 
-## RN Flexbox
+## 3 Layout
+
+### 3.1 Layout with Flexbox
 
 RN layout is based on Flexbox. The [Layout with Flexbox](https://reactnative.dev/docs/flexbox) is a must-read. Follwoing are commonly used styles:
 
@@ -55,7 +53,9 @@ RN layout is based on Flexbox. The [Layout with Flexbox](https://reactnative.dev
   - `flex`: a single value defines the relative size of the item.
   - `align-self`: this overrides container's `align-items`value for this item.
 
-The RN layout engine is called [Yaga](https://yogalayout.com/). It is based the CSS flexbox layout with a few exceptions.
+### 3.2 The Yaga Engine
+
+The RN layout engine is called [Yaga](https://yogalayout.com/). It is based on the CSS flexbox layout with a few exceptions.
 
 - `flexDirection` defaulting to `column` instead of `row`.
 - `alignContent` defaulting to flex-start instead of stretch
@@ -63,7 +63,16 @@ The RN layout engine is called [Yaga](https://yogalayout.com/). It is based the 
 
 Many RN components are both containers and items thus they use all the above styles. The [Yaga Documentation](https://yogalayout.com/docs) describes each properties and gives some examples. You can try with its [Palyground](https://yogalayout.com/playground).
 
-## W3C Flexbox Resources
+## 4 Resources
+
+### 4.1 RN Resources
+
+- [React Native Introduction](https://reactnative.dev/docs/getting-started)
+- [RN style document](https://reactnative.dev/docs/style)
+- [a complete guide to flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/): The first three subjects.
+- [RN Layout with Flexbox](https://reactnative.dev/docs/flexbox)
+
+### 4.2 W3C Flexbox Resources
 
 CSS uses box model for UI style. Flexbox stands for flexible box that is a W3C recommended method to lay out, align and distribute space among items in a container.
 
