@@ -1,6 +1,6 @@
 # JSX
 
-## Rational
+## 1 Rational
 
 JSX stands for **JavaScript XML**. It is a JavaScript syntax extension used to describe UI **elements**. In Reeact Native, UI is inherently coupled with UI logic such as event handling and state management. Therefore JSX consists of declarative UI description and JavaScript code. JSX is a syntac sugar for JavaScript code. It makes UI description much simpler than pure JavaScript code. Using JSX, you can write XML markup inside Javascript, providing you with a superpower to write logic and markup of an element inside a single JSX file.
 
@@ -20,7 +20,7 @@ React.createElement(MyButton, { color: 'blue', shadowSize: 2 }, 'Click Me');
 
 The JSX code is simpler and more intuitive than the pure JavaScript code.
 
-## JSX Expression
+## 2 JSX Expression
 
 A JSX expressino is used to create React elements. React elements are created by using their tags, either with or without closing tag. For example: `<Text>content</Text>` or `<Button title="Click" />` are valid JSX expressions. The tag specifies a **component** to be rendered -- it is the `type` of the element. A JSX expression uses the same HTML syntax with different tag names. The RN built-in and custom components use capitalized names.
 
@@ -56,7 +56,7 @@ const hello = (
 );
 ```
 
-## Embedding Expressions in JSX
+## 3 Embedding Expressions in JSX
 
 JavaScript expressions inside JSX will be evaluated to a string, a RN component or a list of strings/components. You can embed JavaScripit expressions in JSX by putting them inside a pair of curly bracket `{expression}`. For example:
 
@@ -73,11 +73,11 @@ const user = {
 const element = <Text>Hello, {formatName(user)}!</Text>;
 ```
 
-## Compile JSX
+## 4 Compile JSX
 
-Because RN uses `React` to compile JSX, you need to import it first as: `import React from 'react'` in your JSX file even you don't use it directly in your code. This is not required after React 17.0 but many documents don't mention this.
+Because RN uses `React` to compile JSX, you need to import it first as: `import React from 'react'` in your JSX file even you don't use it directly in your code. This is not required after React 17.0 but many documents and websites are outdated.
 
-## Resource
+## 5 JSX Resource
 
 - [Introducing JSX](https://reactnative.dev/docs/intro-react#jsx)
 - [JSX Guide](https://www.reactnative.express/javascript/jsx)

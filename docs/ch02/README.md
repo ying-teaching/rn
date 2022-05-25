@@ -10,13 +10,13 @@ In WWW, when you type an URL or click a web link, the HTTPS protocol will return
 
 [React Native](https://reactnative.dev/) combines the best parts of mobile app native development with React for building cross-platform user interfaces. It extends the React web-based UI to run in Web, smart phones (iOS and Android) and desktops. In the future, the list may include game consoles, TVs and more.
 
-### 1.1 Web Page
+## 2 Web Page
 
 A web page has three parts: data, style and behaior.
 
-- The data is constructed using HTML. Check [HTML Bascis](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/HTML_basics).
-- The style is define using CSS. Check [CSS Bascis](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/CSS_basics)
-- The behavior is created using JavaScript. Check [JavaScript Basics](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics).
+- The data is constructed using HTML. Please check [HTML Bascis](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/HTML_basics).
+- The style is define using CSS. Please check [CSS Bascis](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/CSS_basics)
+- The behavior is created using JavaScript. Please check [JavaScript Basics](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics).
 
 React and React Native use JavaScript or TypeScript (JS with Type) as its programming language. It uses the CSS to style UI components. JSX is a special syntax to mix JavaScript, UI components and styles together.
 
@@ -27,19 +27,19 @@ Following are some new JavaScript features commonly used in modern apps.
 - [Spread](https://www.reactnative.express/javascript/features/spread)
 - [Async and Await](https://www.reactnative.express/javascript/features/async_and_await)
 
-## 1.2 JSX
+## 3 JSX
 
-[An introduction to JSX](jsx.md).
+In React Native, you don't use HTML + CSS + JavaScript the same way you develop web page. You use a specical syntax called **JavaScript XML (JSX)** to create UI elements. It is described in a separate [jsx document](./jsx.md) for easy reference in the future.
 
-## 2 Web Learning Resources
+## 4 Resources
 
-### 2.1 HTML & CSS
+### 4.1 HTML & CSS
 
 - [Learn to Code HTML & CSS](https://learn.shayhowe.com/html-css/). In React Native, the HTML elements will be replaced by React Native elements and the CSS styles have different names.
 
 - [Learn CSS](https://web.dev/learn/css/)
 
-### 2.2 Javascript
+### 4.2 Javascript
 
 For a quick tutorial, please check [MDN JS tutorial](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript).
 
