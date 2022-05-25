@@ -1,8 +1,6 @@
-# Component, Style and Layout
+# Components Style and Layout
 
-## 1 Component
-
-### 1.1 Views and Components
+## 1 View, Components and Elements
 
 From [React Native Document](https://reactnative.dev/docs/intro-react-native-components):
 
@@ -12,7 +10,9 @@ From [React Native Document](https://reactnative.dev/docs/intro-react-native-com
 
 React Native uses components that are backed by the corresponding Android and iOS views. These platform-backed components are called `Native Components`. RN provides a set of commonly used Native comonents. These are RN's [Core Components](https://reactnative.dev/docs/components-and-apis). Components are composable -- it means that a component can have one or more sub components. It is an individual resualble piece of a React App.
 
-A component rendered in a screen is called a React **Element**. Elements in a screen are organized as a tree. Formally, the component is the `type` of rendered element.
+A component rendered in a screen is called a React **Element**. Elements in a screen are organized as a tree. Formally, the component is the `type` of rendered element. A component may have many properties (called `props`) such as `style` or component-specific setup data. For example, a `<Button>` component has a `title` prop to specifies the button text. You use component property names to initialize its props. For exxmple, `<Button title="Submit" />`.
+
+In summary, when you create a UI element, you use JSX to specify a component as its type and provide one or more props (including `style`) to initialize its view.
 
 ## 2 Style
 
