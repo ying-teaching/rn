@@ -24,8 +24,8 @@ When you install the VS Code extension `ES7 React/Redux/React-Native/JS snippets
 For example, you can create a `Cat.js` file that defines a `Cat` component as the following:
 
 ```jsx
-import React from "react";
-import { Text } from "react-native";
+import React from 'react';
+import { Text } from 'react-native';
 
 export default function Cat() {
   // no need to use () for a single element without nested elements
@@ -38,7 +38,7 @@ Then you can use it in your `App.js` as the following:
 ```jsx
 // ... the rest of App.js is generated from expo init
 
-import Cat from "./Cat";
+import Cat from './Cat';
 
 export default function App() {
   return (
@@ -54,15 +54,15 @@ export default function App() {
 You use JSX syntax to define a functional component that creates a component using a regular JavaScript function. Except the `<Component>` tag syntax and `{expression}` for JavaScript expression, a JSX file is a regular JavaScript file that you can write any regular JavaScript code. The following is a revised version of `Cat.js` that defines a function and two variables and uses them in the `<Text>` element.
 
 ```jsx
-import React from "react";
-import { Text } from "react-native";
+import React from 'react';
+import { Text } from 'react-native';
 
 function getFullname(first, last) {
-  return first + " " + last;
+  return first + ' ' + last;
 }
 
-const first = "James";
-const last = "Bond";
+const first = 'James';
+const last = 'Bond';
 
 export default function Cat() {
   return <Text>Hello, {getFullname(first, last)}'s cat</Text>;
@@ -75,12 +75,12 @@ A component can be composed from multiple components. For any non-trivial projec
 
 ```js
 // file: components/styles.js
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   catInput: {
     height: 40,
-    borderColor: "gray",
+    borderColor: 'gray',
     borderWidth: 1,
   },
 });
@@ -90,9 +90,9 @@ export default styles;
 
 ```jsx
 // file: components/cat.js
-import React from "react";
-import { Text, TextInput, View } from "react-native";
-import styles from "./styles";
+import React from 'react';
+import { Text, TextInput, View } from 'react-native';
+import styles from './styles';
 
 export default function Cat() {
   return (
@@ -109,7 +109,7 @@ Then you can use the `Cat` component in `App.js` as a regular component such as 
 ```jsx
 // partial file: app.js
 
-import Cat from "./comonents/Cat";
+import Cat from './comonents/Cat';
 
 export default function App() {
   return (
@@ -133,13 +133,13 @@ You use props to customize RN components. Props is short for “properties" that
 // partial app.js
 
 // import Image
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, View, Image } from 'react-native';
 
 export default function App() {
   return (
     <View style={styles.container}>
       <Image
-        source={{ uri: "https://reactnative.dev/docs/assets/p_cat1.png" }}
+        source={{ uri: 'https://reactnative.dev/docs/assets/p_cat1.png' }}
         style={{ width: 200, height: 200 }}
       />
       <Text>Hello, I am your cat!</Text>
@@ -223,13 +223,13 @@ If you want to get a deep understanding, read [Everything you need to know about
 
 ## 4 States
 
-There are two common types of data that control a component: `props` and `state`. `props` are set by the parent and they are fixed throughout the lifetime of a component. For data that is going to change, we have to use `state`.
+There are two common types of data that control a component: `props` and `state`. `props` are set by the parent and they are fixed throughout the lifetime of a component. For data that is going to change, you have to use `state`.
 
 In general, you should initialize state at the top of a function component, and then call `setState` when you want to change it. A hook is a special function that lets you “hook into” a component. The `useState` function is a hook that lets you add state to components.
 
 ```js
-import React, { useState } from "react";
-import { Button, Text, View } from "react-native";
+import React, { useState } from 'react';
+import { Button, Text, View } from 'react-native';
 
 const Cat = (props) => {
   const [count, setCount] = useState(0);
@@ -274,8 +274,8 @@ You can use multiple state variables. For example, the following code snippet de
 
 ```js
 const [age, setAge] = useState(42);
-const [fruit, setFruit] = useState("banana");
-const [todos, setTodos] = useState([{ text: "Learn Hooks" }]);
+const [fruit, setFruit] = useState('banana');
+const [todos, setTodos] = useState([{ text: 'Learn Hooks' }]);
 ```
 
 The [RN State Guide](https://reactnative.dev/docs/intro-react#state) has more information and an example of a stateful component.
@@ -307,13 +307,13 @@ In handling text input and button, you define event handlers to handle UI events
 The following is an example that takes a user input number and print the squared resulte.
 
 ```jsx
-import { StatusBar } from "expo-status-bar";
-import React from "react";
-import { Button, StyleSheet, Text, TextInput, View } from "react-native";
+import { StatusBar } from 'expo-status-bar';
+import React from 'react';
+import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
 
 export default function App() {
   const [number, onChangeNumber] = React.useState(0);
-  const [message, setMessage] = React.useState("");
+  const [message, setMessage] = React.useState('');
 
   function getSquare() {
     const squared = number * number;
@@ -338,9 +338,9 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 ```

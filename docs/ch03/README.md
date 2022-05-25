@@ -61,7 +61,7 @@ The RN layout engine is called [Yaga](https://yogalayout.com/). It is based the 
 - `alignContent` defaulting to flex-start instead of stretch
 - the `flex` parameter only supporting a single number.
 
-Many RN components are both containers and items thus they use all the above styles. The [Yaga Documentation](https://yogalayout.com/docs) describes each properties and gives some examples. We can try with its [Palyground](https://yogalayout.com/playground).
+Many RN components are both containers and items thus they use all the above styles. The [Yaga Documentation](https://yogalayout.com/docs) describes each properties and gives some examples. You can try with its [Palyground](https://yogalayout.com/playground).
 
 ## W3C Flexbox Resources
 
