@@ -212,7 +212,10 @@ The second type of data is the data used/managed internally, called **states** a
 - created and managed internally. For example, a click counter component may increase the counter whenever a user clicks a button. This value should not be passed by its parent because it is the responsibility for the click counter component to manage the conter.
 - fetched from outside but managed internally. A commmon example is that a component may fetch data from an external web site and display the result.
 
-Once created by its paranet and rendered as a nested element, the component gets immutable props from its parent but manages its states independently. This independency is an essential feature of composable compoonent: it can be development and used like a Lego block.
+Once created by its paranet and rendered as a nested element, the component gets immutable props from its parent but manages its states independently. This independency is an essential feature of composable component. Two important benefits are:
+
+- For developers, components can be development and used easilly like a Lego block.
+- For apps, components are re-rendered only when their states change. This signficantly improves the runtime performance because there is no need to re-rendere components whose states are not changed.
 
 It is important to remember this fact: **every time there is a change in any prop/state of a functional component, the component is called and rendered with changed value**.
 
@@ -234,7 +237,7 @@ If you want to get a deep understanding, read [Everything you need to know about
 
 ### 3.2 State and Effect
 
-Essentially, hooks are functions that let you "hook into" functional components to provide state and lifecycle features. In a simplified view, a component lifecycle has three stages: `mounting`, `updating` and `unmounting`.
+Essentially, hooks are functions that let you "hook into" functional components to provide state management and lifecycle operations. In a simplified view, a component lifecycle has three stages: `mounting`, `updating` and `unmounting`.
 
 - `mounting`: when the component is mounted to the element tree and is rendered.
 - `updating`: when props/states change, the component is re-rendered with new changes.
@@ -244,6 +247,8 @@ Two types of commonly used built-in hooks are:
 
 - State hook: a state hook adds a local state to a component. You can have multiple state hook for multiple local states. Any state change triggers the component to `updating` stage.
 - Effect hook: an effect hook is used to define operations triggered by component lifecyle stage changes. It is for a "side effect" operation. Data fetching, data subscription and UI manipulation operations are "side effects" because they are not belong to component rendering but need to be performed when a component is in `mounting` or `updating` stages. It may need to clear resources when the component is in `unmounting` stage.
+
+Because a component is defined by its props and state, **data fected by effect hook will be applied to component using the state hook to change the component UI**.
 
 In addition to the built-in hooks, you can create custom hooks that manage stateful logic and resue them in different components. Due to the functional nature of the hooks, hooks are reused for their logic, not their states. The state of each component is independent.
 
