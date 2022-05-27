@@ -112,9 +112,7 @@ export default function App() {
 }
 ```
 
-## 2 Component Props
-
-### 2.1 Component Props
+### 1.4 Component Props
 
 You use props to customize RN components. Props is short for “properties" that are passed as function arguments to a component. In JSX syntax, prop values are passed as attribute values. Most RN built-in components can be customized by different props.
 
@@ -144,9 +142,13 @@ There are two important rules for props of a component:
 
 A `pure` function means for the same input of `props`, it always returns the same output. A pure function doesn't return different values for the same input. For exmaple, `Math.sqrt(x)` is a pure function while `Math.random()` is not a pure funciton.
 
-### 2.2 Core Component Caegories
+## 2 Core Component
 
-RN provides a set of commonly used [Core Components](https://reactnative.dev/docs/components-and-apis). The core components can be classified into the following categories:
+RN provides a set of commonly used [Core Components](https://reactnative.dev/docs/components-and-apis). The community has many open source UI libraries. [React Native Elements](https://reactnativeelements.com/) and [NativeBase](https://nativebase.io/) have many good cross-platform components.
+
+### 2.1 Core Component Caegories
+
+The core components can be classified into the following categories:
 
 - Basic Components: `<View>`, `<Text>`, `<Image>`, `<TextInput>`, `<ScrollView>` and `<StyleSheet>`.
 - User Interface: `<Button>` and `<Switch>`.
@@ -155,7 +157,7 @@ RN provides a set of commonly used [Core Components](https://reactnative.dev/doc
 - iOS Components.
 - Others: such as `<Alert>`, `<Modal>`, `StatusBar` etc.
 
-### 2.3 Core Component Examples
+### 2.2 Core Component Examples
 
 - [`<View>`](https://reactnative.dev/docs/view): A container that supports layout with flexbox, style, some touch handling, and accessibility controls. View maps directly to the native view equivalent on whatever platform React Native is running on, whether that is a UIView (iOS), `<div>` (Web), android.view (Android), etc.
 - [`<Text>`](https://reactnative.dev/docs/text): a component for display text. It supports nesting, sytling and touch handling.
@@ -164,7 +166,7 @@ RN provides a set of commonly used [Core Components](https://reactnative.dev/doc
 
 In handling text input and button, you define event handlers to handle UI events. It is a common pattern for most UI applications.
 
-### 2.4 Custom Component
+### 2.3 Custom Component
 
 To define a customizable functional component (hereafter simply component), you define a function with a `props` parameter.
 
@@ -205,13 +207,18 @@ In the above code, the two components `Hello` and `Hello2` are defined by two fu
 
 To understand the hook concept, you need to understand what constitute a component. The primary purpose of a component is to render data to a screen. A component has two kinds of data: the data passed by its parent and the data used internally. Props are data passed by its parent when it is created and stay the same unless it is recreated.
 
-The second type of data is the data used/managed internally, called **states** and may be changed by user interaction, API calls, time elapse or other events. For example, a click counter component may increase the counter whenever a user clicks a button. This value should not be passed by its parent because it is the responsibility for the click counter component to manage the conter. Another commmon example is that a component may fetch data from an external web site and display the result.
+The second type of data is the data used/managed internally, called **states** and may be changed by user interaction, API calls, time elapse or other events. There are two sources of state data:
 
-It is important to remember this fact: **every time there is a change in the props/states of a functional component, the component is called and rendered with changed value**.
+- created and managed internally. For example, a click counter component may increase the counter whenever a user clicks a button. This value should not be passed by its parent because it is the responsibility for the click counter component to manage the conter.
+- fetched from outside but managed internally. A commmon example is that a component may fetch data from an external web site and display the result.
+
+Once created by its paranet and rendered as a nested element, the component gets immutable props from its parent but manages its states independently. This independency is an essential feature of composable compoonent: it can be development and used like a Lego block.
+
+It is important to remember this fact: **every time there is a change in any prop/state of a functional component, the component is called and rendered with changed value**.
 
 ### 3.2 Use States in Functions
 
-A good way to think about hooks and functional components is to think that hooks add some extra hidden contextual varaibles to functional components.
+A good way to think about hooks and functional components is to think that hooks add some extra hidden contextual varaibles (the states) to functional components.
 
 Hooks are new features introduced in React 16.8 on February 6, 2019 and Reactive Native 0.59 on March 12, 2019. They help to eanble functional programming paradigm, i.e., writing applications without using a class.
 
