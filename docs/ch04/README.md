@@ -412,23 +412,25 @@ The side-effect function can return another function that is executed when the c
 
 ### 5.4 An Example
 
-The following code fetch data from a remote server by calling its REST API.
+The following code fetch data from a remote server by calling its REST API. To make the code easy to read, we put the `useEffect` code in a saprate file.
 
-```jsx
-import React, { useState, useEffect } from 'react';
-import {
-  ActivityIndicator,
-  FlatList,
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+```js
+// useFetch.js
+import { useState, useEffect } from 'react';
 
-export default function App() {
+export default function useFetch(page) {
   const [data, setData] = useState([]);
-  const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
+
+  useEffect(
+    () => {
+      fetchData(); // !! call async function in a function definition
+    },
+    // dependency
+    [page]
+  );
+
+  return { loading, data };
 
   // For async call, we need to define an asyn function and call it.
   async function fetchData() {
@@ -455,14 +457,27 @@ export default function App() {
       abortController.abort();
     };
   }
+}
+```
 
-  useEffect(
-    () => {
-      fetchData(); // !! call async function in a function definition
-    },
-    // dependency
-    [page]
-  );
+```js
+// app.js
+import { useState } from 'react';
+import {
+  ActivityIndicator,
+  FlatList,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
+
+import useFetch from './useFetch';
+
+export default function App() {
+  const [page, setPage] = useState(1);
+
+  const { loading, data } = useFetch(page);
 
   function renderItem({ item, index }) {
     return (
