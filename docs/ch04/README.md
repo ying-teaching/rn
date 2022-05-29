@@ -368,10 +368,17 @@ you are performing a so-called `side effect`. Usually these tasks should be perf
 
 You should know the following facts about effect hook:
 
-- `useEffect` is executed asynchronously after the first render and after every update (re-render). It doesn't block the UI rendereing.
+- `useEffect` is executed asynchronously after the first render (actually when the component is mounted) and after every update (re-render). It doesn't block the UI rendereing.
 - Use `useEffect` for asynchronous tasks.
 - Effects run after every render cycle. You have options to opt out from this behavior by defining a array of dependencies.
 - An effect is rerun if at least one of its values changes since the last render cycle.
+
+`useEffect` usage is a little complex because it can optionally specifies two important behaviors:
+
+- when to run it. By default it runs for every re-rendering. However, you can specify the dependencies that it should run.
+- clean used resources. The clean-up code runs when the component is dismounted.
+
+Once you understand the timing/clean-up requirements, `useEffect` is easy to use.
 
 ### 5.2 Declare Dependency
 
