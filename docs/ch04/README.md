@@ -458,7 +458,7 @@ export default function App() {
 
   useEffect(
     () => {
-      fetchData();
+      fetchData(); // !! call async function in a function definition
     },
     // dependency
     [page]
