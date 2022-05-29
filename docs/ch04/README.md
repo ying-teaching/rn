@@ -430,30 +430,36 @@ export default function App() {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
 
+  // For async call, we need to define an asyn function and call it.
+  async function fetchData() {
+    const abortController = new AbortController();
+    const signal = abortController.signal;
+
+    console.log(`loading page: ${page}`);
+    const apiURL = `http://jsonplaceholder.typicode.com/todos?_limit=10&_page=${page}`;
+
+    setLoading(true);
+    try {
+      const result = await fetch(apiURL, { method: 'get', signal });
+      const jsonValue = await result.json();
+      setData(data.concat(jsonValue));
+    } catch (error) {
+      console.log(error.message);
+    } finally {
+      setLoading(false);
+    }
+
+    // cancel function, called if the component is destroyed
+    return () => {
+      console.log(`Aborting fetch ${page}`);
+      abortController.abort();
+    };
+  }
+
   useEffect(
     () => {
-      const abortController = new AbortController();
-      const signal = abortController.signal;
-
-      console.log(`loading page: ${page}`);
-      setLoading(true);
-      const apiURL = `http://jsonplaceholder.typicode.com/todos?_limit=10&_page=${page}`;
-
-      fetch(apiURL, { method: 'get', signal })
-        .then((res) => res.json())
-        .then((resJson) => {
-          setData(data.concat(resJson));
-          setLoading(false);
-        })
-        .catch((error) => console.log(error.message));
-
-      // cancel function, called the the previous component is destroyed
-      return () => {
-        console.log(`Aborting fetch ${page}`);
-        abortController.abort();
-      };
+      fetchData();
     },
-
     // dependency
     [page]
   );
@@ -541,5 +547,6 @@ const styles = StyleSheet.create({
 
 To gain a deep understanding of hook:
 
-- [The last guide to the `useEffect` Hook you’ll ever need](https://blog.logrocket.com/guide-to-react-useeffect-hook/)
+- [The last guide to the `useEffect` Hook you’ll ever need](https://blog.logrocket.com/guide-to-react-useeffect-hook/): a good in-depth introudction to effect.
 - Youtube video [Getting Closure on React Hooks](https://youtu.be/KJP1E-Y-xyo) shows how to build a tiny Hook clone in simple JavaScript code.
+- [Awesome React Hooks Resources](https://github.com/rehooks/awesome-react-hooks): a list of good hook resources.
