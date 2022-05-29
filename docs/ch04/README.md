@@ -233,8 +233,6 @@ The primary benefits of class components are state management and component life
 - Hooks make it possible to write small functions in different categroies: local state management, data subscription or data fetching.
 - Classes are confusing for several reasons: verbose syntax, confusing meanings of `this`, complex class hierarchy etc. Functions are much simpler in writing and understanding.
 
-If you want to get a deep understanding, read [Everything you need to know about react hooks](https://medium.com/@vcarl/everything-you-need-to-know-about-react-hooks-8f680dfd4349)
-
 ### 3.2 State and Effect
 
 Essentially, hooks are functions that let you "hook into" functional components to provide state management and lifecycle operations. In a simplified view, a component lifecycle has three stages: `mounting`, `updating` and `unmounting`.
@@ -310,8 +308,6 @@ const [age, setAge] = useState(42);
 const [fruit, setFruit] = useState('banana');
 const [todos, setTodos] = useState([{ text: 'Learn Hooks' }]);
 ```
-
-The [RN State Guide](https://reactnative.dev/docs/intro-react#state) has more information and an example of a stateful component.
 
 ### 4.2 An Input Example
 
@@ -534,6 +530,8 @@ const styles = StyleSheet.create({
 - [RN State Guide](https://reactnative.dev/docs/intro-react#state)
 - [Hooks API Reference](https://reactjs.org/docs/hooks-reference.html)
 
-The Youtube video [Getting Closure on React Hooks](https://youtu.be/KJP1E-Y-xyo) shows how to build a tiny Hook clone in simple JavaScript code. It helps to understanding the rules and theories of Hooks.
+To gain a deep understanding of hook:
 
-To gain a deep understanding, the article [The last guide to the `useEffect` Hook you’ll ever need](https://blog.logrocket.com/guide-to-react-useeffect-hook/) is a good introdcution to the key concepts of using effects.
+- [Everything need to know hooks](https://blog.vcarl.com/everything-need-to-know-hooks/)
+- [The last guide to the `useEffect` Hook you’ll ever need](https://blog.logrocket.com/guide-to-react-useeffect-hook/)
+- Youtube video [Getting Closure on React Hooks](https://youtu.be/KJP1E-Y-xyo) shows how to build a tiny Hook clone in simple JavaScript code.
