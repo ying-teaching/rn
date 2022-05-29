@@ -235,7 +235,9 @@ The primary benefits of class components are state management and component life
 
 ### 3.2 State and Effect
 
-Essentially, hooks are functions that let you "hook into" functional components to provide state management and lifecycle operations. In a simplified view, a component lifecycle has three stages: `mounting`, `updating` and `unmounting`.
+Essentially, hooks are functions that let you "hook into" functional components to provide state management and lifecycle operations. In a simplified view, a component lifecycle has three stages: `mounting`, `updating` and `unmounting` as shown below:
+
+![lifecycle image](./lifecycle.png)
 
 - `mounting`: when the component is mounted to the element tree and is rendered.
 - `updating`: when props/states change, the component is re-rendered with new changes.
@@ -244,7 +246,7 @@ Essentially, hooks are functions that let you "hook into" functional components 
 Two types of commonly used built-in hooks are:
 
 - State hook: a state hook adds a local state to a component. You can have multiple state hook for multiple local states. Any state change triggers the component to `updating` stage.
-- Effect hook: an effect hook is used to define operations triggered by component lifecyle stage changes. It is for a "side effect" operation. Data fetching, data subscription and UI manipulation operations are "side effects" because they are not belong to component rendering but need to be performed when a component is in `mounting` or `updating` stages. It may need to clear resources when the component is in `unmounting` stage.
+- Effect hook: an effect hook is used to define operations triggered by component lifecyle stage changes. It is for a "side effect" operation. Data fetching, data subscription and UI manipulation operations are "side effects" because they are not belong to component rendering but need to be performed when a component is in `mounting` and `updating` stages, i.e., it runs after the first render and after every update. Effects don't block UI because they run asynchronously. In `unmouting` stage, an effect must free any resources that it uses.
 
 Because a component is defined by its props and state, **data fected by effect hook will be applied to component using the state hook to change the component UI**.
 
@@ -369,14 +371,14 @@ you are performing a so-called `side effect`. Usually these tasks should be perf
 You should know the following facts about effect hook:
 
 - `useEffect` is executed asynchronously after the first render (actually when the component is mounted) and after every update (re-render). It doesn't block the UI rendereing.
-- Use `useEffect` for asynchronous tasks.
+- Use `useEffect` for all asynchronous tasks.
 - Effects run after every render cycle. You have options to opt out from this behavior by defining a array of dependencies.
-- An effect is rerun if at least one of its values changes since the last render cycle.
+- An effect is rerun if any of its dependencies changes since the last render cycle.
 
 `useEffect` usage is a little complex because it can optionally specifies two important behaviors:
 
 - when to run it. By default it runs for every re-rendering. However, you can specify the dependencies that it should run.
-- clean used resources. The clean-up code runs when the component is dismounted.
+- clean used resources. The clean-up code runs when the component is dismounted or before the execution of the next scheduled effect.
 
 Once you understand the timing/clean-up requirements, `useEffect` is easy to use.
 
@@ -390,7 +392,7 @@ useEffect(() => {
 });
 ```
 
-The side-effect function is a mandatory argument. With only one argument, the side-effect funciton is executed after **every** rendering operation. Usually that is not what you want -- you should add second argument: an array of dependents (props or states) that cause the side-effect execution.
+The side-effect function is a mandatory argument. With only one argument, the side-effect funciton is executed after **every** rendering operation. Usually that is not what you want -- you should add second argument: an array of dependencies (props or states) that cause the side-effect execution. If the array of dependencies is empty, the effect runs only once in the `mounting` stage.
 
 ```jsx
 // this code runs only at the initial render
