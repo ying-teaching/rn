@@ -532,6 +532,6 @@ const styles = StyleSheet.create({
 
 To gain a deep understanding of hook:
 
-- [Everything need to know hooks](https://blog.vcarl.com/everything-need-to-know-hooks/)
 - [The last guide to the `useEffect` Hook you’ll ever need](https://blog.logrocket.com/guide-to-react-useeffect-hook/)
 - Youtube video [Getting Closure on React Hooks](https://youtu.be/KJP1E-Y-xyo) shows how to build a tiny Hook clone in simple JavaScript code.
+- [Everything need to know hooks](https://blog.vcarl.com/everything-need-to-know-hooks/)
