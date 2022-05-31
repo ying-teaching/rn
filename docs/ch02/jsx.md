@@ -2,7 +2,7 @@
 
 ## 1 Rational
 
-JSX stands for **JavaScript XML**. It is a JavaScript syntax extension used to describe UI **elements**. In Reeact Native, UI is inherently coupled with UI logic such as event handling and state management. Therefore JSX consists of declarative UI description and JavaScript code. JSX is a syntac sugar for JavaScript code. It makes UI description much simpler than pure JavaScript code. Using JSX, you can write XML markup inside Javascript, providing you with a superpower to write logic and markup of an element inside a single JSX file.
+JSX stands for **JavaScript XML**. It is a JavaScript syntax extension used to describe UI **elements**. In React Native, UI is inherently coupled with UI logic such as event handling and state management. Therefore JSX consists of declarative UI description and JavaScript code. JSX is a syntac sugar for JavaScript code. It makes UI description much simpler than pure JavaScript code. Using JSX, you can write XML markup inside Javascript, providing you with a superpower to write logic and markup of an element inside a single JSX file.
 
 The JSX code, copied from [JSX in Depth](https://reactjs.org/docs/jsx-in-depth.html):
 
@@ -18,7 +18,7 @@ is the same as the following pure-JavaScript code:
 React.createElement(MyButton, { color: 'blue', shadowSize: 2 }, 'Click Me');
 ```
 
-The JSX code is simpler and more intuitive than the pure JavaScript code.
+The JSX code is simpler and more intuitive than the pure JavaScript code, especially when there are many props and nested components. The JSX code represents the **declarative** feature of React app development.
 
 ## 2 JSX Expression
 

@@ -50,20 +50,27 @@ const styles = StyleSheet.create({
 });
 ```
 
+Differnt components have different style props. For example, the `Text` component has [19 props](https://reactnative.dev/docs/text-style-props) including `color`, `fontFamily`, `fontSize`, etc. The [Style doc](https://reactnative.dev/docs/style) has some examples.
+
 ## 3 Layout
+
+In addition to its own style props, a component can specify the layout of its children. Luckily it is much simpler than the CSS layout.
 
 ### 3.1 Layout with Flexbox
 
-RN layout is based on Flexbox. The [Layout with Flexbox](https://reactnative.dev/docs/flexbox) is a must-read. Follwoing are commonly used styles:
+RN layout is based on Flexbox. The [Layout with Flexbox](https://reactnative.dev/docs/flexbox) gives an interactive layout description - you should play with it many times to make sure that you undertand the meaning of the follwoing are commonly used styles:
 
 - Container Styles
   - `flexDirection`: this defines the `main axis`, can be either `column` or `row`. In RN, default is `column`. Items are placed from top to bottome.
   - `justify-content`: this defines the alignment of items along the main axis. Common values are `flex-start`, `flex-end`, `center`, `space-between`, `space-around` and `space-evenly`.
-  - `align-items`: this defines the alignment of items along the cross axis. Common values are `stretch`, `flex-start`, `flex-end`, `center`, and `baseline`.
-  - `align-content`: this aligns the container's lines when there is extra space in cross-axis. Values are `flex-start`, `flex-end`, `center`, `stretch`, `space-between`, and `space-around`.
+  - `align-items`: this defines the alignment of items along the cross axis. Common values are `stretch`, `flex-start`, `flex-end`, `center`, and `baseline`. It determines how the items **as a whole** are aligned within the container.
+  - `align-content`: this aligns the container's lines when there is extra space in cross-axis. Values are `flex-start`, `flex-end`, `center`, `stretch`, `space-between`, and `space-around`. It determines the **spacing between lines**. When there is only one line, it has no effect.
 - Item Styles
-  - `flex`: a single value defines the relative size of the item.
   - `align-self`: this overrides container's `align-items`value for this item.
+  - `height` and `width`: when specify fixed dimensioins, both values are unitless and represent density-independent pixels. For relative sizes, use percentages.
+  - `flex`: a single value defines the relative size of the item.
+
+The [Height and Width doc](https://reactnative.dev/docs/height-and-width) shows some size examples.
 
 ### 3.2 The Yaga Engine
 
