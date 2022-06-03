@@ -316,30 +316,37 @@ const [todos, setTodos] = useState([{ text: 'Learn Hooks' }]);
 The following is an example that takes a user input number and print the squared resulte.
 
 ```jsx
+import { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
+import { StyleSheet, Button, Text, TextInput, View } from 'react-native';
 
 export default function App() {
-  const [number, onChangeNumber] = React.useState(0);
-  const [message, setMessage] = React.useState('');
+  const [number, setNumber] = useState(0);
+  const [message, setMessage] = useState('');
 
   function getSquare() {
     const squared = number * number;
-    return `The square of ${number} is ${squared}.`;
+    return `The square of ${number} is ${squared}`;
+  }
+
+  function onChangeText(input) {
+    const inputNumber = parseInt(input);
+    setNumber(inputNumber);
   }
 
   return (
     <View style={styles.container}>
-      <Text>Input a number: </Text>
+      <Text>Input a number:</Text>
       <TextInput
-        onChangeText={onChangeNumber}
-        value={number}
+        style={{ backgroundColor: 'grey' }}
+        onChangeText={onChangeText}
+        value={number.toString()}
         keyboardType="numeric"
       />
       <Button title="Calc Square" onPress={() => setMessage(getSquare())} />
-      <StatusBar style="auto" />
+
       <Text>{message}</Text>
+      <StatusBar style="auto" />
     </View>
   );
 }
