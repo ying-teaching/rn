@@ -296,7 +296,7 @@ export default Cafe;
 
 The above `useState(0)` call does two things:
 
-- it creates a state variable `count` with an initial value of `0`.
+- it creates a **read-only** state variable `count` with an initial value of `0`.
 - it creates a function to set that state variable’s value— `setCount`.
 
 The pattern of using `setState` is `[<value-refence>, <setter-function>] = useState(<initialValue>)`. The `useState` returns a pair of value in an array. The assignment is an array destructuring. The left is a name of a state variable, the right is a function name that can set a new value to the state variable. The two names doens't matter, you can name them whatever make sense in the context.
