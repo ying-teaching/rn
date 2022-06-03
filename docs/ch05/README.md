@@ -11,14 +11,12 @@ Resources:
 
 ## 1 Installation
 
-After you initialize a project with `expo init myProject -t blank` command, go to the project folder using `cd myProject`, then install the following packages
+After you initialize a project with `expo init myProject -t blank` command, go to the project folder using `cd myProject`, then follow [Getting Started document](https://reactnavigation.org/docs/getting-started/) to install the following packages
 
-- navigation packages: `yarn add @react-navigation/native`
-- Some peer dependencies for Expo managed project: `expo install react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view`
+- Navigation packages: `yarn add @react-navigation/native`
+- Navigator Dependencies: `expo install react-native-screens react-native-safe-area-context`
 
 The reason that you use `expo install` is to let Expo selects the compatible packages. `yarn add` alwasy installs the latest version that may not work correctly with Expo.
-
-To finalize installation of `react-native-gesture-handler`, add the following at the top (make sure it's at the top and there's nothing else before it) of your entry file, usually it is `App.js`: `import 'react-native-gesture-handler';`
 
 ## 2 Stack Navigator
 
@@ -36,20 +34,17 @@ To use the stack navigation, following these steps:
 The following is an App that uses stack navigator with two screens:
 
 ```jsx
-import "react-native-gesture-handler";
+import { StyleSheet, View, Text, Button } from 'react-native';
 
-import React from "react";
-import { StyleSheet, View, Text, Button } from "react-native";
-
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
 function HomeScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <Button
         title="Go to profile"
-        onPress={() => navigation.navigate("Profile")}
+        onPress={() => navigation.navigate('Profile')}
       />
     </View>
   );
@@ -72,7 +67,7 @@ export default function App() {
         <Stack.Screen
           name="Home"
           component={HomeScreen}
-          options={{ title: "Welcome" }}
+          options={{ title: 'Welcome' }}
         />
         <Stack.Screen name="Profile" component={ProfileScreen} />
       </Stack.Navigator>
@@ -83,9 +78,9 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 ```
@@ -95,20 +90,17 @@ const styles = StyleSheet.create({
 In each screen component, you can have two props: `navigation` and `route`. You use the `navigation` prop to navigate to different screen. The `navigation.navigate` function can take route params as its second argument. In the target screen, those params can be read from `route.params`.
 
 ```jsx
-import "react-native-gesture-handler";
+import { StyleSheet, View, Text, Button } from 'react-native';
 
-import React from "react";
-import { StyleSheet, View, Text, Button } from "react-native";
-
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
 function HomeScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <Button
         title="Go to Jane's profile"
-        onPress={() => navigation.navigate("Profile", { name: "Jane" })}
+        onPress={() => navigation.navigate('Profile', { name: 'Jane' })}
       />
     </View>
   );
@@ -131,7 +123,7 @@ export default function App() {
         <Stack.Screen
           name="Home"
           component={HomeScreen}
-          options={{ title: "Welcome" }}
+          options={{ title: 'Welcome' }}
         />
         <Stack.Screen name="Profile" component={ProfileScreen} />
       </Stack.Navigator>
@@ -142,28 +134,25 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 ```
 
-## 4 Tab Navigation and Drawer Navigation
+## 4 Tab Navigation
 
-There are several tab navigators. Tabs can be at the bottom or at the top. The usage is similar to stack navigator. First, install the tab navigator package: `yarn add @react-navigation/bottom-tabs`. Then create tab navigator and use the tab navigator and tab screens inside `<NavigationContainer>`. You can still use the `navigation.navigate` to navigate to a different screen. Please pay attentioin to set an initial parameter for a screen using `initialParams={{ name: "Alice" }}`. The target screen will report an error is the parameter is missing.
+There are several tab navigators. Tabs can be at the bottom or at the top. The usage is similar to stack navigator. First, install the tab navigator package: `yarn add @react-navigation/bottom-tabs`. Then create tab navigator and use the tab navigator and tab screens inside `<NavigationContainer>`. You can still use the `navigation.navigate` to navigate to a different screen. Please pay attentioin to set an initial parameter for a screen using `initialParams={{ name: "Alice" }}`. The target screen will report an error if the parameter is missing.
 
-Similarly, you can intall the drawer navigatition package using `yarn add @react-navigation/drawer` and create a drawer navigator using `createDrawerNavigator`.
+Similarly, you can use other navigators such as top tabs and drawers.
 
 ```jsx
-import "react-native-gesture-handler";
+import { StyleSheet, Text, Button, View } from 'react-native';
 
-import React from "react";
-import { StyleSheet, Text, Button, View } from "react-native";
-
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 function HomeScreen({ navigation }) {
   return (
@@ -171,7 +160,7 @@ function HomeScreen({ navigation }) {
       <Text>Home Screen</Text>
       <Button
         title="Go to Jane's profile"
-        onPress={() => navigation.navigate("Profile", { name: "Jane" })}
+        onPress={() => navigation.navigate('Profile', { name: 'Jane' })}
       />
     </View>
   );
@@ -181,7 +170,7 @@ function ProfileScreen({ navigation, route }) {
   return (
     <View style={styles.container}>
       <Text>This is {route.params.name}'s profile</Text>
-      <Button title="Go Home" onPress={() => navigation.navigate("Home")} />
+      <Button title="Go Home" onPress={() => navigation.navigate('Home')} />
     </View>
   );
 }
@@ -195,12 +184,12 @@ export default function App() {
         <Tab.Screen
           name="Home"
           component={HomeScreen}
-          options={{ title: "Welcome" }}
+          options={{ title: 'Welcome' }}
         />
         <Tab.Screen
           name="Profile"
           component={ProfileScreen}
-          initialParams={{ name: "Alice" }}
+          initialParams={{ name: 'Alice' }}
         />
       </Tab.Navigator>
     </NavigationContainer>
@@ -210,12 +199,14 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 ```
+
+The [Moving between Screens doc](https://reactnavigation.org/docs/navigating) shows examples of navigating between multiple screeens.
 
 ## 5 Context Hook
 
@@ -231,7 +222,7 @@ The following is an example using a context hook to share the count of clicks in
 
 ```jsx
 // count-context.js
-import React from "react";
+import React from 'react';
 
 const CountContext = React.createContext();
 export default CountContext;
@@ -241,17 +232,17 @@ In `App.js` you create a state hook and share its value and change function usin
 
 ```jsx
 // App.js
-import "react-native-gesture-handler";
+import 'react-native-gesture-handler';
 
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-import CountContext from "./count-context";
+import CountContext from './count-context';
 
-import HomeScreen from "./screens/Home";
-import ProfileScreen from "./screens/Profile";
+import HomeScreen from './screens/Home';
+import ProfileScreen from './screens/Profile';
 
 const Stack = createStackNavigator();
 
@@ -265,7 +256,7 @@ export default function App() {
           <Stack.Screen
             name="Home"
             component={HomeScreen}
-            options={{ title: "Welcome" }}
+            options={{ title: 'Welcome' }}
           />
           <Stack.Screen name="Profile" component={ProfileScreen} />
         </Stack.Navigator>
@@ -279,12 +270,12 @@ The `Home` screen uses the context hook.
 
 ```jsx
 // components/Home.js
-import React, { useContext } from "react";
-import { View, Text, Button } from "react-native";
+import React, { useContext } from 'react';
+import { View, Text, Button } from 'react-native';
 
-import CountContext from "../count-context";
+import CountContext from '../count-context';
 
-import styles from "./style";
+import styles from './style';
 
 export default function Home({ navigation }) {
   const { count, setCount } = useContext(CountContext);
@@ -297,7 +288,7 @@ export default function Home({ navigation }) {
       <Button
         title="Go to profile"
         onPress={() => {
-          navigation.navigate("Profile", { name: "Jane", count });
+          navigation.navigate('Profile', { name: 'Jane', count });
         }}
       />
     </View>
@@ -310,10 +301,10 @@ You can also use it in a component that might be shared by many components.
 ```jsx
 // components/ClickButton.js
 
-import React, { useContext } from "react";
-import { Button, Text, View } from "react-native";
+import React, { useContext } from 'react';
+import { Button, Text, View } from 'react-native';
 
-import CountContext from "../count-context";
+import CountContext from '../count-context';
 
 export default function ClickButton({ title }) {
   const { count, setCount } = useContext(CountContext);
@@ -331,12 +322,12 @@ Then use the `ClickButton` in a `Profile` screen.
 
 ```jsx
 // screens/Profile.js
-import React from "react";
-import { View, Text, Button } from "react-native";
+import React from 'react';
+import { View, Text, Button } from 'react-native';
 
-import ClickButton from "../componnets/ClickButton";
+import ClickButton from '../componnets/ClickButton';
 
-import styles from "./style";
+import styles from './style';
 
 export default function Profile({ navigation, route }) {
   return (
@@ -346,7 +337,7 @@ export default function Profile({ navigation, route }) {
       <Button
         title="Go Home"
         onPress={() => {
-          navigation.navigate("Home");
+          navigation.navigate('Home');
         }}
       />
     </View>
@@ -359,14 +350,14 @@ All screens share the same style file.
 ```jsx
 // screens/style.js
 
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 

@@ -161,10 +161,10 @@ The core components can be classified into the following categories:
 
 - [`<View>`](https://reactnative.dev/docs/view): A container that supports layout with flexbox, style, some touch handling, and accessibility controls. View maps directly to the native view equivalent on whatever platform React Native is running on, whether that is a UIView (iOS), `<div>` (Web), android.view (Android), etc.
 - [`<Text>`](https://reactnative.dev/docs/text): a component for display text. It supports nesting, sytling and touch handling.
-- [Handling Text Input](https://reactnative.dev/docs/handling-text-input).
-- [`<Button>`](https://reactnative.dev/docs/button): A simple clickable button. If you want a cusotmized button, check [Custom Button](https://docs.expo.io/tutorial/button/) to create a custom button using `<TouchableOpacity>`.
+- [Image](https://reactnative.dev/docs/image).
+- [`<Button>`](https://reactnative.dev/docs/button): A simple clickable button. If you want a cusotmized button, use [Pressable](https://reactnative.dev/docs/pressable).
 
-In handling text input and button, you define event handlers to handle UI events. It is a common pattern for most UI applications.
+To handle button click, you define event handlers to handle UI events. It is a common pattern for most UI applications.
 
 ### 2.3 Custom Component
 
@@ -205,7 +205,7 @@ In the above code, the two components `Hello` and `Hello2` are defined by two fu
 
 ### 3.1 Props and States
 
-To understand the hook concept, you need to understand what constitute a component. The primary purpose of a component is to render data to a screen. A component has two kinds of data: the data passed by its parent and the data used internally. Props are data passed by its parent when it is created and stay the same unless it is recreated.
+To understand the hook concept, you need to understand what constitute a component. The primary purpose of a component is to render data to a screen. A component has two kinds of data: the data passed by its parent and the data used internally. Props are data passed by its parent when it is created and stay the same unless it is changed by its parent.
 
 The second type of data is the data used/managed internally, called **states** and may be changed by user interaction, API calls, time elapse or other events. There are two sources of state data:
 
@@ -383,9 +383,9 @@ you are performing a so-called `side effect`. Usually these tasks should be perf
 
 You should know the following facts about effect hook:
 
-- `useEffect` is executed asynchronously after the first render (actually when the component is mounted) and after every update (re-render). It doesn't block the UI rendereing.
+- `useEffect` is executed asynchronously after the first render (actually when the component is mounted) and possibly after every update (re-render). It doesn't block the UI rendereing.
 - Use `useEffect` for all asynchronous tasks.
-- Effects run after every render cycle. You have options to opt out from this behavior by defining a array of dependencies.
+- Effects run after every render cycle by default. You have options to opt out from this behavior by defining a array of dependencies.
 - An effect is rerun if any of its dependencies changes since the last render cycle.
 
 `useEffect` usage is a little complex because it can optionally specifies two important behaviors:
@@ -393,13 +393,14 @@ You should know the following facts about effect hook:
 - when to run it. By default it runs for every re-rendering. However, you can specify the dependencies that it should run.
 - clean used resources. The clean-up code runs when the component is dismounted or before the execution of the next scheduled effect.
 
-Once you understand the timing/clean-up requirements, `useEffect` is easy to use.
+Once you understand the timing/clean-up concepts, `useEffect` is easy to use.
 
 ### 5.2 Declare Dependency
 
 In a simple case, you call `useEffect` with a side-effect function as its only rgument like the following:
 
 ```js
+// runs after every render
 useEffect(() => {
   console.log('Effect ran');
 });
