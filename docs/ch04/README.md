@@ -429,104 +429,82 @@ The side-effect function can return another function that is executed when the c
 The following code fetch data from a remote server by calling its REST API. To make the code easy to read, we put the `useEffect` code in a saprate file.
 
 ```js
-// useFetch.js
-import { useState, useEffect } from 'react';
-
-export default function useFetch(page) {
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(false);
-
-  useEffect(
-    () => {
-      fetchData(); // !! call async function in a function definition
-    },
-    // dependency
-    [page]
-  );
-
-  return { loading, data };
-
-  // For async call, we need to define an asyn function and call it.
-  async function fetchData() {
-    const abortController = new AbortController();
-    const signal = abortController.signal;
-
-    console.log(`loading page: ${page}`);
-    const apiURL = `http://jsonplaceholder.typicode.com/todos?_limit=10&_page=${page}`;
-
-    setLoading(true);
-    try {
-      const result = await fetch(apiURL, { method: 'get', signal });
-      const jsonValue = await result.json();
-      setData(data.concat(jsonValue));
-    } catch (error) {
-      console.log(error.message);
-    } finally {
-      setLoading(false);
-    }
-
-    // cancel function, called if the component is destroyed
-    return () => {
-      console.log(`Aborting fetch ${page}`);
-      abortController.abort();
-    };
-  }
-}
-```
-
-```js
-// app.js
-import { useState } from 'react';
+import { StatusBar } from 'expo-status-bar';
 import {
-  ActivityIndicator,
-  FlatList,
-  SafeAreaView,
   StyleSheet,
   Text,
   View,
+  FlatList,
+  SafeAreaView,
+  ActivityIndicator,
 } from 'react-native';
 
-import useFetch from './useFetch';
+import { useState, useEffect } from 'react';
+import { render } from 'react-dom';
 
 export default function App() {
-  const [page, setPage] = useState(1);
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
 
-  const { loading, data } = useFetch(page);
+  async function fetchData(page) {
+    console.log(`fetching data for page: ${page}`);
+    setLoading(true);
 
-  function renderItem({ item, index }) {
+    const apiURL = `http://jsonplaceholder.typicode.com/todos?_limit=10&_page=${page}`;
+
+    try {
+      const result = await fetch(apiURL, { method: 'get' });
+      const jsonValue = await result.json();
+      setData(data.concat(jsonValue));
+    } catch (error) {
+      console.warn(error);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  useEffect(() => {
+    fetchData(currentPage);
+  }, [currentPage]);
+
+  console.log('render screen');
+
+  function renderItem({ item }) {
     return (
       <View style={styles.item}>
-        <Text style={styles.itemText}>{`${index} ${item.title}`}</Text>
+        <Text
+          style={styles.itemText}
+        >{`User Id: ${item.id}, title: ${item.title} `}</Text>
       </View>
     );
+  }
+
+  function handleMore() {
+    setCurrentPage(currentPage + 1);
   }
 
   function renderFooter() {
     return (
       { loading } && (
-        <View style={styles.loader}>
+        <SafeAreaView>
           <ActivityIndicator size="large" />
-        </View>
+        </SafeAreaView>
       )
     );
   }
 
-  function handleLoadMore() {
-    setPage(page + 1);
-  }
-
   return (
     <SafeAreaView style={styles.container}>
+      <Text>User List</Text>
       <FlatList
         style={styles.list}
         data={data}
         renderItem={renderItem}
-        ListFooterComponent={renderFooter()}
-        keyExtractor={(_, index) => index.toString()}
-        // Called when all rows have been rendered and the list has been scrolled to within onEndReachedThreshold of the bottom.
-        onEndReached={handleLoadMore}
-        // Threshold in pixels (virtual, not physical) for calling onEndReached.
+        keyExtractor={(_, index) => index}
+        onEndReached={handleMore}
         onEndReachedThreshold={0}
+        ListFooterComponent={renderFooter()}
       />
     </SafeAreaView>
   );
