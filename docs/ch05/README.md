@@ -22,45 +22,88 @@ The reason that you use `expo install` is to let Expo selects the compatible pac
 
 A simple navigator is a stack navigator. It simulates the browser nagivation. At the beginning, you have a home screen in the screen stack, then you push a new screen to the stack. When you go back, you pop a screen out of the stack.
 
-First, install the stack navigation package: `yarn add @react-navigation/stack`.
+First, install the stack navigation package: `yarn add @react-navigation/native-stack`.
 
 To use the stack navigation, following these steps:
 
 - define several screen components.
-- create a stack before the root function component: `const Stack = createStackNavigator();`.
+- create a stack before the root function component: `const Stack = createNativeStackNavigator();`.
 - in the root function component, use `<NavigationContainer>` as the root element that wraps the `<Stack.Navigator`.
 - use `<Stack.Screen>` inside the `<Stack.Navigator>` for each screen component. Each `<Stack.Screen>` takes a screen name, a component and other optional props such as screen title.
 
-The following is an App that uses stack navigator with two screens:
+The following is the App that uses stack navigator with two screens. The image was copied from `https://reactnative.dev/img/tiny_logo.png` to as the `assets/react_log.png`.
 
-```jsx
-import { StyleSheet, View, Text, Button } from 'react-native';
+```js
+// The Home Screen has a styles file and a component file.
+// screens/Home/Styles.js
+import { StyleSheet } from 'react-native';
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  logo: {
+    width: 66,
+    height: 58,
+  },
+});
+
+export default styles;
+
+// screens/Home/index.jsx
+import { View, Text, Pressable, Image } from 'react-native';
+
+import styles from './styles';
+
+export default function HomeSceen({ navigation }) {
+  return (
+    <View style={styles.container}>
+      <Text>Home Screen</Text>
+      <Pressable onPress={() => navigation.navigate('Profile')}>
+        <Image
+          style={styles.logo}
+          source={require('../../assets/react_logo.png')}
+        />
+      </Pressable>
+    </View>
+  );
+}
+
+// the Profile Screen has one file
+// screens/Profile/index.jsx
+import { View, Text, StyleSheet } from 'react-native';
+
+export default function ProfileScreen() {
+  return (
+    <View style={styles.container}>
+      <Text>The Profile</Text>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
+
+// The App.js
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
 
-function HomeScreen({ navigation }) {
-  return (
-    <View style={styles.container}>
-      <Button
-        title="Go to profile"
-        onPress={() => navigation.navigate('Profile')}
-      />
-    </View>
-  );
-}
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-function ProfileScreen() {
-  return (
-    <View style={styles.container}>
-      <Text>This is a profile</Text>
-    </View>
-  );
-}
-
-const Stack = createStackNavigator();
+import HomeScreen from './screens/Home';
+import ProfileScreen from './screens/Profile';
 
 export default function App() {
+  const Stack = createNativeStackNavigator();
+
   return (
     <NavigationContainer>
       <Stack.Navigator>
@@ -75,14 +118,7 @@ export default function App() {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
 ```
 
 ## 3 Passing Parameters
