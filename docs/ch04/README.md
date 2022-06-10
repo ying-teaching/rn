@@ -316,36 +316,32 @@ const [todos, setTodos] = useState([{ text: 'Learn Hooks' }]);
 The following is an example that takes a user input number and print the squared resulte.
 
 ```jsx
-import { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Button, Text, TextInput, View } from 'react-native';
+import { StyleSheet, Text, TextInput, Pressable, View } from 'react-native';
+import { useState } from 'react';
 
 export default function App() {
-  const [number, setNumber] = useState(0);
+  const [numberText, setNumberText] = useState('');
   const [message, setMessage] = useState('');
 
-  function getSquare() {
-    const squared = number * number;
-    return `The square of ${number} is ${squared}`;
-  }
-
-  function onChangeText(input) {
-    const inputNumber = parseInt(input) || 0;
-    setNumber(inputNumber);
+  function calcSquare() {
+    const number = parseInt(numberText);
+    if (number) {
+      const squared = number * number;
+      setMessage(squared.toString());
+    } else {
+      setMessage('invalid input.');
+    }
   }
 
   return (
     <View style={styles.container}>
-      <Text>Input a number:</Text>
-      <TextInput
-        style={styles.input}
-        onChangeText={onChangeText}
-        value={number.toString()}
-        keyboardType="numeric"
-      />
-      <Button title="Calc Square" onPress={() => setMessage(getSquare())} />
-
-      <Text>{message}</Text>
+      <Text style={styles.title}>Input a Number</Text>
+      <TextInput style={styles.textInput} onChangeText={setNumberText} />
+      <Pressable style={styles.pressable} onPress={calcSquare}>
+        <Text>Calc square</Text>
+      </Pressable>
+      <Text style={styles.title}>The square is {message}</Text>
       <StatusBar style="auto" />
     </View>
   );
@@ -355,14 +351,25 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     justifyContent: 'center',
+    padding: 50,
   },
-  input: {
-    height: 40,
-    margin: 12,
+  title: {
+    fontSize: 20,
+    color: 'blue',
+  },
+  pressable: {
+    marginVertical: 10,
+    borderWidth: 2,
+    borderColor: 'green',
+    padding: 5,
+  },
+  textInput: {
     borderWidth: 1,
+    width: 60,
     padding: 10,
+    marginVertical: 10,
   },
 });
 ```
