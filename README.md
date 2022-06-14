@@ -28,4 +28,4 @@ To be current and accurate, this lecture notes is based on official documents an
 - [ch04 Components and Hooks](docs/ch04)
 - [ch05 Navigation and Context Hook](docs/ch05)
 - [ch06 List](docs/ch06)
-- [ch08 GraphQL and Apollo Client](docs/ch07)
+- [ch07 GraphQL and Apollo Client](docs/ch07)
